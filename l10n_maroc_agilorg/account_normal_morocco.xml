@@ -2,12 +2,11 @@
 
 <openerp>
 <data>
-        <!--     
-        Plan comptable général pour le Maroc.
-    Version du fichier : 13-10-2010
-    Mis en place par la société Kazacube - partenaire OpenERP au Maroc
-    Vérifié et validé par le cabinet SEDDIK d'expertise comptable, Casablanca.
-      --> 
+       <!--
+       		Plan comptable marocain modele normal
+       	
+       	-->
+       
 
   <record id="pcg_0" model="account.account.template">
     <field name="name">Plan_Comptable_Maroc</field>
