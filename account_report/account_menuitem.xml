@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+	 <menuitem id="menu_finance_reports_MA" name="ReportingMA" parent="account.menu_finance" sequence="13"/>
+	 <menuitem id="menu_finance_legal_statement_MA" name="Legal ReportsMA" parent="menu_finance_reports_MA"/>
+	 <menuitem
+            parent="menu_finance_legal_statement_MA"
+            id="menu_journals_report_MA"
+            name="JournalsMA"/>
+            
+      <menuitem
+            name="Sale/Purchase Journals"
+            parent="menu_journals_report_MA"
+            action="account.action_account_print_sale_purchase_journal"
+            id="menu_account_print_sale_purchase_journal_MA"
+            icon="STOCK_PRINT"
+            sequence="1"/>
+   
+	 <menuitem
+            name="General Journals_MA"
+            parent="menu_journals_report_MA"
+            action="account.action_account_general_journal"
+            id="menu_account_general_journal_MA"
+            icon="STOCK_PRINT"/> 
+     
+     <menuitem
+            name="Centralizing Journal"
+            parent="menu_journals_report_MA"
+            action="account.action_account_central_journal"
+            id="menu_account_central_journal_MA"
+            icon="STOCK_PRINT"/>   
+            
+     <menuitem
+            icon="STOCK_PRINT"
+            name="General LedgerMA"
+            parent="menu_finance_reports_MA"
+            action="account.action_account_general_ledger_menu"
+            id="menu_general_ledger"
+           />                         
+	</data>
+</openerp>	
+			

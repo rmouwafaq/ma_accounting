@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+		<template id="account_generale_reportMA" inherit_id="account.report_generaljournal">
+			<xpath expr="//t[@t-call='report.html_container']" position="replace">
+				<t t-call="report.html_container">
+
+					<t t-foreach="periods(docs)" t-as="o">
+						<t t-esc="grouped_periods(o.id)" />
+					</t>
+
+					<!--<t t-foreach="journals(docs)" t-as="o">
+					<t t-foreach="lines_tab(o.journal_id)" t-as="lines"/>
+					</t>-->
+					<t t-foreach="journals(docs)" t-as="o">
+						<template id="account_generale_header" inherit_id="report.external_layout_header">
+							<xpath expr="//div[@class='header']" position="replace">
+								<div class="header">
+									<div class="row">
+										<div class="col-xs-3">
+											<img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 45px;"/>
+										</div>
+										<div class="col-xs-9 text-right" style="margin-top:32px">
+											<strong>Date:</strong>
+											<span t-esc="date_jour1()" style="color: #000066;" />
+										</div>
+									</div>
+									<div class="row zero_min_height">
+										<div class="col-xs-12">
+											<div style="border-bottom: 1px solid black;"></div>
+										</div>
+									</div>
+									<h6>General Journal</h6>
+									<div class="row ">
+										<div class="col-xs-3">
+											<strong>Chart of Accounts:</strong>
+											<p t-esc="get_account(data)"/>
+										</div>
+										<div class="col-xs-3">
+											<strong>Fiscal Year:</strong>
+											<p t-esc="get_fiscalyear(data)"/>
+										</div>
+										<div class="col-xs-3">
+											<strong>Journals:</strong>
+											<p t-esc="', '.join([ lt or '' for lt in get_journal(data)])"/>
+										</div>
+										<div class="col-xs-3">
+											<strong>Filter By:</strong>
+											<p>
+												<span t-if="data['form']['filter'] == 'filter_no'">Not filtered</span>
+												<span t-if="data['form']['filter'] == 'filter_period'">Filtered by period</span>
+												<span t-if="data['form']['filter'] == 'filter_date'">Filtered by date</span>
+												<p t-if="data['form']['filter'] == 'filter_period'">
+													Start Period:
+													<span t-esc="get_start_period(data)"/>
+													End Period:
+													<span t-esc="get_end_period(data)"/>
+												</p>
+												<p t-if="data['form']['filter'] == 'filter_date'">
+													Date from :
+													<span t-esc="formatLang(get_start_date(data), date=True)"/>
+													<br />
+													Date to :
+													<span t-esc="formatLang(get_end_date(data), date=True)"/>
+												</p>
+											</p>
+										</div>
+									</div>
+									<!--<div class="row ">
+									<div class="col-xs-3">
+									<strong>Target Moves:</strong>
+									<p t-esc="get_target_move(data)"/>
+									</div>
+									</div>-->
+
+								</div>
+							</xpath>
+						</template>
+						<div class="page">
+							<table class="table table-bordered">
+								<thead>
+									<tr class="info">
+										<th>Code</th>
+										<th>Journal Name</th>
+										<th>Debit</th>
+										<th>Credit</th>
+									</tr>
+								</thead>
+								<tbody>
+
+									<tr t-foreach="o" t-as="line">
+
+										<td>
+											<span t-esc="line['code']"/>
+										</td>
+										<td>
+											<span t-esc="line['name']"/>
+										</td>
+										<td>
+											<span t-esc="line['debit']"/>
+										</td>
+										<td>
+											<span t-esc="line['credit']"/>
+										</td>
+									</tr>
+									<tr class="danger">
+										<th>Total:</th>
+										<th></th>
+										<th>
+											<span t-esc="formatLang(sum_debit())"/>
+										</th>
+										<th>
+											<span t-esc="formatLang(sum_credit())"/>
+										</th>
+
+									</tr>
+									<!--<tr style="font-weight: bold;">
+										<td>
+											<span t-field="o.name"/>
+											:
+										</td>
+										<td></td>
+										<td>
+											<span t-esc="formatLang(sum_debit_period(o.id))"/>
+										</td>
+										<td>
+											<span t-esc="formatLang(sum_credit_period(o.id))"/>
+										</td>
+									</tr>-->
+								</tbody>
+							</table>
+						</div>
+						<template id="account_general_footer" inherit_id="report.external_layout_footer">
+							<xpath expr="//div[@class='footer']" position="replace">
+								<div class="footer">
+									<div class="text-center" style="border-top: 1px solid black;">
+										<ul t-if="not company.custom_footer" class="list-inline">
+											<li t-if="company.phone">
+												Phone:
+												<span t-field="company.phone"/>
+											</li>
+											<li t-if="company.fax and company.phone">&amp;bull;</li>
+											<li t-if="company.fax">
+												Fax:
+												<span t-field="company.fax"/>
+											</li>
+											<li t-if="company.email">&amp;bull;</li>
+											<li t-if="company.email">
+												Email:
+												<span t-field="company.email"/>
+											</li>
+											<li t-if="company.website">&amp;bull;</li>
+											<li t-if="company.website">
+												Website:
+												<span t-field="company.website"/>
+											</li>
+										</ul>
+										<t t-if="company.custom_footer">
+											<span t-raw="company.rml_footer"/>
+										</t>
+										<ul class="list-inline">
+											<li>Page:</li>
+											<li>
+												<span class="page"/>
+											</li>
+											<li>/</li>
+											<li>
+												<span class="topage"/>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</xpath>
+						</template>
+					</t>
+				</t>
+			</xpath>
+		</template>
+	</data>
+</openerp>

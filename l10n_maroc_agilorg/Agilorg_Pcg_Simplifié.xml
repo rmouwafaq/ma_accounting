@@ -1,0 +1,2131 @@
+<?xml version="1.0" encoding="ISO-8859-15"?> 
+
+<openerp>
+	<data noupdate="1">
+		
+		<!--
+			Plan comptable marocain modele simplifié
+			 -->
+		
+		
+		
+	<record id="pc_0" model="account.account.template">
+    <field name="name">Plan Comptable Maroc Simplifié</field>
+    <field name="code">0</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id"/>
+  </record>
+   <record id="pc_c15" model="account.account.template">
+    <field name="name">COMPTES DE SITUATION</field>
+    <field name="code">CLASSE 1_5</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_0"/>
+  </record>
+  <record id="pc_c68" model="account.account.template">
+    <field name="name">COMPTES DE GESTION</field>
+    <field name="code">CLASSE 6_8</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_0"/>
+  </record>
+  <record id="pc_c1" model="account.account.template">
+    <field name="name">COMPTES DE FINANCEMENT PERMANENT</field>
+    <field name="code">CLASSE_1</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c15"/>
+  </record>
+  <record id="pc_11" model="account.account.template">
+    <field name="name">CAPITAUX PROPRES</field>
+    <field name="code">11</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c1"/>
+  </record>
+  <record id="pc_111" model="account.account.template">
+    <field name="name">Capital social ou personnel</field>
+    <field name="code">111</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_11"/>
+  </record>
+  <record id="pc_1111" model="account.account.template">
+    <field name="name">Capital social</field>
+    <field name="code">1111</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_111"/>
+  </record>
+  <record id="pc_1117" model="account.account.template">
+    <field name="name">Capital personnel</field>
+    <field name="code">1117</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_111"/>
+  </record>
+  <record id="pc_11171" model="account.account.template">
+    <field name="name">Capital individuel</field>
+    <field name="code">11171</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_1117"/>
+  </record>
+  <record id="pc_11175" model="account.account.template">
+    <field name="name">Compte de l'exploitant</field>
+    <field name="code">11175</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_1117"/>
+  </record>
+  <record id="pc_112" model="account.account.template">
+    <field name="name">Primes d'émission, de fusion et d'apport</field>
+    <field name="code">112</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_11"/>
+  </record>
+  <record id="pc_1120" model="account.account.template">
+    <field name="name">Primes d'émission, de fusion et d'apport</field>
+    <field name="code">1120</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_112"/>
+  </record>
+  <record id="pc_113" model="account.account.template">
+    <field name="name">Écarts de réévaluation</field>
+    <field name="code">113</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_11"/>
+  </record>
+  <record id="pc_1130" model="account.account.template">
+    <field name="name">Écarts de réévaluation</field>
+    <field name="code">1130</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_113"/>
+  </record>
+  <record id="pc_116" model="account.account.template">
+    <field name="name">Report à  nouveau et résultat nets en instance d'affectation</field>
+    <field name="code">116</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_11"/>
+  </record>
+  <record id="pc_1161" model="account.account.template">
+    <field name="name">Report à  nouveau (solde créditeur)</field>
+    <field name="code">1161</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_116"/>
+  </record>
+  <record id="pc_1162" model="account.account.template">
+    <field name="name">résultat nets en instance d'affectation (solde créditeur)</field>
+    <field name="code">1162</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_116"/>
+  </record>
+   <record id="pc_1168" model="account.account.template">
+    <field name="name">Report à  nouveau (solde débiteur)</field>
+    <field name="code">1168</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_116"/>
+  </record>
+   <record id="pc_1169" model="account.account.template">
+    <field name="name">résultat nets en instance d'affectation (solde débiteur)</field>
+    <field name="code">1169</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_116"/>
+  </record>
+  <record id="pc_117" model="account.account.template">
+    <field name="name">Réserves diverses</field>
+    <field name="code">117</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_11"/>
+  </record>
+  <record id="pc_1171" model="account.account.template">
+    <field name="name">Réserve légale</field>
+    <field name="code">1171</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_117"/>
+  </record>
+  <record id="pc_1172" model="account.account.template">
+    <field name="name">Réserves statutaires ou contractuelles</field>
+    <field name="code">1172</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_117"/>
+  </record>
+ <record id="pc_1173" model="account.account.template">
+    <field name="name">Réserves facultatives</field>
+    <field name="code">1173</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_117"/>
+  </record>
+   <record id="pc_1175" model="account.account.template">
+    <field name="name">Réserves réglementées</field>
+    <field name="code">1175</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_117"/>
+  </record>
+   <record id="pc_1178" model="account.account.template">
+    <field name="name">Autres réserve</field>
+    <field name="code">1178</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_117"/>
+  </record>
+   <record id="pc_119" model="account.account.template">
+    <field name="name">Résultat net de l'exercice</field>
+    <field name="code">119</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_11"/>
+  </record>
+  <record id="pc_1191" model="account.account.template">
+    <field name="name">Résultat net de l'exercice (solde créditeur)</field>
+    <field name="code">1191</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_119"/>
+  </record>
+  <record id="pc_1199" model="account.account.template">
+    <field name="name">Résultat net de l'exercice (solde débiteur)</field>
+    <field name="code">1199</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_119"/>
+  </record>
+   <record id="pc_13" model="account.account.template">
+    <field name="name">CAPITAUX PROPRES ASSIMILES</field>
+    <field name="code">13</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_c1"/>
+  </record>
+   <record id="pc_130" model="account.account.template">
+    <field name="name">CAPITAUX PROPRES ASSIMILES</field>
+    <field name="code">130</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_13"/>
+  </record>
+  <record id="pc_1300" model="account.account.template">
+    <field name="name">CAPITAUX PROPRES ASSIMILES</field>
+    <field name="code">1300</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_130"/>
+  </record>
+  <record id="pc_14" model="account.account.template">
+    <field name="name">DETTES DE FINANCEMENT</field>
+    <field name="code">14</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c1"/>
+  </record>
+  <record id="pc_140" model="account.account.template">
+    <field name="name">DETTES DE FINANCEMENT</field>
+    <field name="code">140</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_14"/>
+  </record>
+  <record id="pc_1400" model="account.account.template">
+    <field name="name">DETTES DE FINANCEMENT</field>
+    <field name="code">1400</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_dlt"/>
+    <field name="parent_id" ref="pc_140"/>
+  </record>
+  <record id="pc_15" model="account.account.template">
+    <field name="name">Provisions durables pour risques et charges</field>
+    <field name="code">15</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c1"/>
+  </record>
+  <record id="pc_150" model="account.account.template">
+    <field name="name">Provisions durables pour risques et charges</field>
+    <field name="code">150</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_15"/>
+  </record>
+  <record id="pc_1500" model="account.account.template">
+    <field name="name">Provisions durables pour risques et charges</field>
+    <field name="code">1500</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_reg"/>
+    <field name="parent_id" ref="pc_150"/>
+  </record>
+  <record id="pc_c2" model="account.account.template">
+    <field name="name">COMPTES D'ACTIF IMMOBILISE</field>
+    <field name="code">CLASSE 2</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c15"/>
+  </record>
+  <record id="pc_21" model="account.account.template">
+    <field name="name">IMMOBILISATIONS EN NON-VALEURS</field>
+    <field name="code">21</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c2"/>
+  </record>
+   <record id="pc_210" model="account.account.template">
+    <field name="name">IMMOBILISATIONS EN NON-VALEURS</field>
+    <field name="code">210</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_21"/>
+  </record>
+  <record id="pc_2101" model="account.account.template">
+    <field name="name">Frais préliminaires</field>
+    <field name="code">2101</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_imm"/>
+    <field name="parent_id" ref="pc_210"/>
+  </record>
+   <record id="pc_2102" model="account.account.template">
+    <field name="name">Charges à répartir sur plusieurs exercices</field>
+    <field name="code">2102</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_imm"/>
+    <field name="parent_id" ref="pc_210"/>
+  </record>
+   <record id="pc_2103" model="account.account.template">
+    <field name="name">Primes de remboursement des obligations</field>
+    <field name="code">2103</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_imm"/>
+    <field name="parent_id" ref="pc_210"/>
+  </record>
+  <record id="pc_22" model="account.account.template">
+    <field name="name">IMMOBILISATIONS INCORPORELLES</field>
+    <field name="code">22</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c2"/>
+  </record>
+  <record id="pc_223" model="account.account.template">
+    <field name="name">Fonds commercial</field>
+    <field name="code">223</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_22"/>
+  </record>
+  <record id="pc_2230" model="account.account.template">
+    <field name="name">Fonds commercial</field>
+    <field name="code">2230</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_imm"/>
+    <field name="parent_id" ref="pc_223"/>
+  </record>
+  <record id="pc_227" model="account.account.template">
+    <field name="name">Immobilisations incorporelles diverses</field>
+    <field name="code">227</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_22"/>
+  </record>
+  <record id="pc_2270" model="account.account.template">
+    <field name="name">Immobilisations incorporelles diverses</field>
+    <field name="code">2270</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_imm"/>
+    <field name="parent_id" ref="pc_227"/>
+  </record>
+    <record id="pc_23" model="account.account.template">
+    <field name="name">IMMOBILISATIONS CORPORELLES</field>
+    <field name="code">23</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c2"/>
+  </record>
+  <record id="pc_231" model="account.account.template">
+    <field name="name">Terrains</field>
+    <field name="code">231</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_23"/>
+  </record>
+   <record id="pc_2310" model="account.account.template">
+    <field name="name">Terrains</field>
+    <field name="code">2310</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_imm"/>
+    <field name="parent_id" ref="pc_231"/>
+  </record>
+  <record id="pc_232" model="account.account.template">
+    <field name="name">Constructions</field>
+    <field name="code">232</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_23"/>
+  </record>
+  <record id="pc_2320" model="account.account.template">
+    <field name="name">Constructions</field>
+    <field name="code">2320</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_232"/>
+  </record>
+  <record id="pc_233" model="account.account.template">
+    <field name="name">Installations techniques, matériel et outillage</field>
+    <field name="code">233</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_23"/>
+  </record>
+  <record id="pc_2330" model="account.account.template">
+    <field name="name">Installations techniques, matériel et outillage</field>
+    <field name="code">2330</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_imm"/>
+    <field name="parent_id" ref="pc_233"/>
+  </record>
+   <record id="pc_234" model="account.account.template">
+    <field name="name">Matériel de transport</field>
+    <field name="code">234</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_23"/>
+  </record>
+  <record id="pc_2340" model="account.account.template">
+    <field name="name">Matériel de transport</field>
+    <field name="code">2340</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_imm"/>
+    <field name="parent_id" ref="pc_234"/>
+  </record>
+   <record id="pc_237" model="account.account.template">
+    <field name="name">Immobilisations corporelles diverses</field>
+    <field name="code">237</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_23"/>
+  </record>t
+  <record id="pc_2370" model="account.account.template">
+    <field name="name">Immobilisations corporelles diverses</field>
+    <field name="code">2370</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_imm"/>
+    <field name="parent_id" ref="pc_237"/>
+  </record>
+  <record id="pc_24" model="account.account.template">
+    <field name="name">IMMOBILISATIONS FINANCIERES </field>
+    <field name="code">24</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c2"/>
+  </record>
+  <record id="pc_240" model="account.account.template">
+    <field name="name">IMMOBILISATIONS FINANCIERES </field>
+    <field name="code">240</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_24"/>
+  </record>
+  <record id="pc_28" model="account.account.template">
+    <field name="name">AMORTISSEMENTS DES IMMOBILISATIONS</field>
+    <field name="code">28</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c2"/>
+  </record>
+  <record id="pc_281" model="account.account.template">
+    <field name="name">Amortissements des non-valeurs</field>
+    <field name="code">281</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_28"/>
+  </record>
+   <record id="pc_2810" model="account.account.template">
+    <field name="name">Amortissements des non-valeurs</field>
+    <field name="code">2810</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_imm"/>
+    <field name="parent_id" ref="pc_281"/>
+  </record>
+  <record id="pc_282" model="account.account.template">
+    <field name="name">Amortissements des immobilisations incorporelles</field>
+    <field name="code">282</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_28"/>
+  </record>
+  <record id="pc_2823" model="account.account.template">
+    <field name="name">Amortissements du fonds commercial</field>
+    <field name="code">2823</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_imm"/>
+    <field name="parent_id" ref="pc_282"/>
+  </record>
+   <record id="pc_2827" model="account.account.template">
+    <field name="name">Amortissements des immobilisations incorporelles diverses</field>
+    <field name="code">2827</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_imm"/>
+    <field name="parent_id" ref="pc_282"/>
+  </record>
+  <record id="pc_283" model="account.account.template">
+    <field name="name">Amortissements des immobilisations corporelles</field>
+    <field name="code">283</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_28"/>
+  </record>
+  <record id="pc_2831" model="account.account.template">
+    <field name="name">Amortissements des terrains</field>
+    <field name="code">2831</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_imm"/>
+    <field name="parent_id" ref="pc_283"/>
+  </record>
+  <record id="pc_2832" model="account.account.template">
+    <field name="name">Amortissements des constructions</field>
+    <field name="code">2832</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_imm"/>
+    <field name="parent_id" ref="pc_283"/>
+  </record>
+  <record id="pc_2833" model="account.account.template">
+    <field name="name">Amortissements des installations techniques, matériel et outillage</field>
+    <field name="code">2833</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_imm"/>
+    <field name="parent_id" ref="pc_283"/>
+  </record>
+  <record id="pc_2834" model="account.account.template">
+    <field name="name">Amortissements du matériel de tarnsport</field>
+    <field name="code">2834</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_imm"/>
+    <field name="parent_id" ref="pc_283"/>
+  </record>
+  <record id="pc_2837" model="account.account.template">
+    <field name="name">Amortissements des immobilisations</field>
+    <field name="code">2837</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_imm"/>
+    <field name="parent_id" ref="pc_283"/>
+  </record>
+   <record id="pc_29" model="account.account.template">
+    <field name="name">PROVISIONS POUR DEPRECIATION DES IMMOBILISATIONS</field>
+    <field name="code">29</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c2"/>
+  </record>
+  <record id="pc_292" model="account.account.template">
+    <field name="name">Provisions pour dépréciation des immobilisations incorporelles</field>
+    <field name="code">292</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_29"/>
+  </record>
+  <record id="pc_2920" model="account.account.template">
+    <field name="name">Provisions pour dépréciation des immobilisations incorporelles</field>
+    <field name="code">2920</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_reg"/>
+    <field name="parent_id" ref="pc_292"/>
+  </record>
+  <record id="pc_293" model="account.account.template">
+    <field name="name">Provisions pour dépréciation des immobilisations corporelles</field>
+    <field name="code">293</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_29"/>
+  </record>
+  <record id="pc_2930" model="account.account.template">
+    <field name="name">Provisions pour dépréciation des immobilisations corporelles</field>
+    <field name="code">2930</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_reg"/>
+    <field name="parent_id" ref="pc_293"/>
+  </record>
+  <record id="pc_294" model="account.account.template">
+    <field name="name">Provisions pour dépréciation des immobilisations financières</field>
+    <field name="code">294</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_29"/>
+  </record>
+  <record id="pc_2940" model="account.account.template">
+    <field name="name">Provisions pour dépréciation des immobilisations financières</field>
+    <field name="code">2940</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_reg"/>
+    <field name="parent_id" ref="pc_29"/>
+  </record>
+  <record id="pc_c3" model="account.account.template">
+    <field name="name">COMPTES D'ACTIF CIRCULANT (HORS TRESORERIE)</field>
+    <field name="code">CLASSE 3</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c15"/>
+  </record>
+  <record id="pc_31" model="account.account.template">
+    <field name="name">STOCKS</field>
+    <field name="code">31</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c3"/>
+  </record>
+  <record id="pc_311" model="account.account.template">
+    <field name="name">Marchandises</field>
+    <field name="code">311</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_31"/>
+  </record>
+    <record id="pc_317" model="account.account.template">
+    <field name="name">Stocks divers</field>
+    <field name="code">317</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_31"/>
+  </record>
+  <record id="pc_3171" model="account.account.template">
+    <field name="name">Matières premières</field>
+    <field name="code">3171</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_stk"/>
+    <field name="parent_id" ref="pc_317"/>
+  </record>
+  <record id="pc_3172" model="account.account.template">
+    <field name="name">Matières et fournitures consommables</field>
+    <field name="code">3172</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_stk"/>
+    <field name="parent_id" ref="pc_317"/>
+  </record>
+  <record id="pc_3173" model="account.account.template">
+    <field name="name">Emballages</field>
+    <field name="code">3173</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_stk"/>
+    <field name="parent_id" ref="pc_317"/>
+  </record>
+  <record id="pc_3175" model="account.account.template">
+    <field name="name">Produits en cours</field>
+    <field name="code">3175</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_stk"/>
+    <field name="parent_id" ref="pc_317"/>
+  </record>
+  <record id="pc_3176" model="account.account.template">
+    <field name="name">Produits intermédiaires et produits résiduels</field>
+    <field name="code">3176</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_cp"/>
+    <field name="parent_id" ref="pc_317"/>
+  </record>
+  <record id="pc_3177" model="account.account.template">
+    <field name="name">Produits finis</field>
+    <field name="code">3177</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_stk"/>
+    <field name="parent_id" ref="pc_317"/>
+  </record>
+  <record id="pc_3178" model="account.account.template">
+    <field name="name">Autres Stocks divers</field>
+    <field name="code">3178</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_stk"/>
+    <field name="parent_id" ref="pc_317"/>
+  </record>
+   <record id="pc_34" model="account.account.template">
+    <field name="name">CREANCES DE L'ACTIF CIRCULANT</field>
+    <field name="code">34</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c3"/>
+  </record>
+  <record id="pc_342" model="account.account.template">
+    <field name="name">Clients et comptes rattachés</field>
+    <field name="code">342</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_34"/>
+  </record>
+  <record id="pc_3421" model="account.account.template">
+    <field name="name">Clients</field>
+    <field name="code">3421</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_342"/>
+  </record>
+   <record id="pc_3423" model="account.account.template">
+    <field name="name">Clients - retenues de garantie</field>
+    <field name="code">3423</field>
+    <field name="type">receivable</field>
+    <field name="user_type" ref="cpt_type_cre"/>
+    <field name="parent_id" ref="pc_342"/>
+  </record>
+  <record id="pc_3424" model="account.account.template">
+    <field name="name">Clients douteux ou litigieux</field>
+    <field name="code">3424</field>
+    <field name="type">receivable</field>
+    <field name="user_type" ref="cpt_type_cre"/>
+    <field name="parent_id" ref="pc_342"/>
+  </record>
+  <record id="pc_3425" model="account.account.template">
+    <field name="name">Clients - effets à  recevoir</field>
+    <field name="code">3425</field>
+    <field name="type">receivable</field>
+    <field name="user_type" ref="cpt_type_cre"/>
+    <field name="parent_id" ref="pc_342"/>
+  </record>
+  <record id="pc_3427" model="account.account.template">
+    <field name="name">Clients - factures à  établir et créances sur travaux non encore facturés</field>
+    <field name="code">3427</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_342"/>
+  </record>
+   <record id="pc_3428" model="account.account.template">
+    <field name="name">Autres clients et comptes rattachés</field>
+    <field name="code">3428</field>
+    <field name="type">receivable</field>
+    <field name="user_type" ref="cpt_type_cre"/>
+    <field name="parent_id" ref="pc_342"/>
+  </record>
+  <record id="pc_346" model="account.account.template">
+    <field name="name">Comptes d'associés - débiteurs</field>
+    <field name="code">346</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_34"/>
+  </record>
+  <record id="pc_3463" model="account.account.template">
+    <field name="name">Comptes courants des associés débiteurs</field>
+    <field name="code">3463</field>
+    <field name="type">receivable</field>
+    <field name="user_type" ref="cpt_type_cre"/>
+    <field name="parent_id" ref="pc_346"/>
+  </record>
+  <record id="pc_3467" model="account.account.template">
+    <field name="name">Créances rattachées aux comptes d'associés</field>
+    <field name="code">3467</field>
+    <field name="type">receivable</field>
+    <field name="user_type" ref="cpt_type_cre"/>
+    <field name="parent_id" ref="pc_346"/>
+  </record>
+  <record id="pc_3468" model="account.account.template">
+    <field name="name">Autres comptes d'associés débiteurs</field>
+    <field name="code">3468</field>
+    <field name="type">receivable</field>
+    <field name="user_type" ref="cpt_type_cre"/>
+    <field name="parent_id" ref="pc_346"/>
+  </record>
+   <record id="pc_347" model="account.account.template">
+    <field name="name">Débiteurs divers</field>
+    <field name="code">347</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_34"/>
+  </record>
+  <record id="pc_3471" model="account.account.template">
+    <field name="name">Fournisseurs - avances et acomptes</field>
+    <field name="code">3471</field>
+    <field name="type">receivable</field>
+    <field name="user_type" ref="cpt_type_cre"/>
+    <field name="parent_id" ref="pc_347"/>
+  </record>
+   <record id="pc_3473" model="account.account.template">
+    <field name="name">Personnel - débiteur</field>
+    <field name="code">3473</field>
+    <field name="type">receivable</field>
+    <field name="user_type" ref="cpt_type_cre"/>
+    <field name="parent_id" ref="pc_347"/>
+  </record>
+   <record id="pc_3475" model="account.account.template">
+    <field name="name">Etat - débiteur</field>
+    <field name="code">3475</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_347"/>
+  </record>
+   <record id="pc_34753" model="account.account.template">
+    <field name="name">Etat - acomptes sur impots sur les résultats</field>
+    <field name="code">34753</field>
+    <field name="type">receivable</field>
+    <field name="user_type" ref="cpt_type_cre"/>
+    <field name="parent_id" ref="pc_3475"/>
+  </record>
+  <record id="pc_34755" model="account.account.template">
+    <field name="name">Etat - TVA récupérable</field>
+    <field name="code">34755</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_3475"/>
+  </record>
+  <record id="pc_3475507" model="account.account.template">
+    <field name="name">Etat - TVA récupérable 7%</field>
+    <field name="code">3475507</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_tax"/>
+    <field name="parent_id" ref="pc_34755"/>
+  </record>
+  <record id="pc_3475510" model="account.account.template">
+    <field name="name">Etat - TVA récupérable 10%</field>
+    <field name="code">3475510</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_tax"/>
+    <field name="parent_id" ref="pc_34755"/>
+  </record>
+  <record id="pc_3475514" model="account.account.template">
+    <field name="name">Etat - TVA récupérable 14%</field>
+    <field name="code">3475514</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_tax"/>
+    <field name="parent_id" ref="pc_34755"/>
+  </record>
+  <record id="pc_3475520" model="account.account.template">
+    <field name="name">Etat - TVA récupérable 20%</field>
+    <field name="code">3475520</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_tax"/>
+    <field name="parent_id" ref="pc_34755"/>
+  </record>
+  <record id="pc_34756" model="account.account.template">
+    <field name="name">Etat - crédit TVA</field>
+    <field name="code">34756</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_tax"/>
+    <field name="parent_id" ref="pc_3475"/>
+  </record>
+    <record id="pc_3478" model="account.account.template">
+    <field name="name">Autres débiteurs divers</field>
+    <field name="code">3478</field>
+    <field name="type">receivable</field>
+    <field name="user_type" ref="cpt_type_cre"/>
+    <field name="parent_id" ref="pc_347"/>
+  </record>
+  <record id="pc_349" model="account.account.template">
+    <field name="name">Comptes de régularisation - actif</field>
+    <field name="code">349</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_34"/>
+  </record>
+  <record id="pc_3491" model="account.account.template">
+    <field name="name">Charges constatées d'avance</field>
+    <field name="code">3491</field>
+    <field name="type">receivable</field>
+    <field name="user_type" ref="cpt_type_cre"/>
+    <field name="parent_id" ref="pc_349"/>
+  </record>
+   <record id="pc_3497" model="account.account.template">
+    <field name="name">Comptes transitoires ou d'attente - débiteurs</field>
+    <field name="code">3497</field>
+    <field name="type">receivable</field>
+    <field name="user_type" ref="cpt_type_cre"/>
+    <field name="parent_id" ref="pc_349"/>
+  </record>
+   <record id="pc_35" model="account.account.template">
+    <field name="name">TITRES ET VALEURS DE PLACEMENT</field>
+    <field name="code">35</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c3"/>
+  </record>
+  <record id="pc_350" model="account.account.template">
+    <field name="name">Titres et valeurs de placement</field>
+    <field name="code">350</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_35"/>
+  </record>
+  <record id="pc_39" model="account.account.template">
+    <field name="name">PROVISIONS POUR DEPRECIATION DES COMPTES DE L'ACTIF CIRCULANT</field>
+    <field name="code">39</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c3"/>
+  </record>
+  <record id="pc_391" model="account.account.template">
+    <field name="name">Provisions pour dépréciation des stocks</field>
+    <field name="code">391</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_39"/>
+  </record>
+  <record id="pc_394" model="account.account.template">
+    <field name="name">Provisions pour dépréciation des créances de l'actif circulant</field>
+    <field name="code">394</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_39"/>
+  </record>
+   <record id="pc_395" model="account.account.template">
+    <field name="name">Provisions pour dépréciation des titres et valeurs de placement</field>
+    <field name="code">395</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_39"/>
+  </record>
+  <record id="pc_3950" model="account.account.template">
+    <field name="name">Provisions pour dépréciation des titres et valeurs de placement</field>
+    <field name="code">3950</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_reg"/>
+    <field name="parent_id" ref="pc_395"/>
+  </record>
+    <record id="pc_c4" model="account.account.template">
+    <field name="name">COMPTES DU PASSIF CIRCULANT (HORS TRESORERIE)</field>
+    <field name="code">CLASSE 4</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c15"/>
+  </record>
+  <record id="pc_44" model="account.account.template">
+    <field name="name">DETTES DU PASSIF CIRCULANT</field>
+    <field name="code">44</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c4"/>
+  </record>
+  <record id="pc_441" model="account.account.template">
+    <field name="name">Fournisseurs et comptes rattachés</field>
+    <field name="code">441</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_44"/>
+  </record>
+  <record id="pc_4411" model="account.account.template">
+    <field name="name">Fournisseurs</field>
+    <field name="code">4411</field>
+    <field name="type">payable</field>
+    <field name="user_type" ref="cpt_type_dct"/>
+    <field name="parent_id" ref="pc_441"/>
+  </record>
+  <record id="pc_4413" model="account.account.template">
+    <field name="name">Fournisseurs - retenues de garantie</field>
+    <field name="code">4413</field>
+    <field name="type">payable</field>
+    <field name="user_type" ref="cpt_type_dct"/>
+    <field name="parent_id" ref="pc_441"/>
+  </record>
+  <record id="pc_4415" model="account.account.template">
+    <field name="name">Fournisseurs - effets à  payer</field>
+    <field name="code">4415</field>
+    <field name="type">payable</field>
+    <field name="user_type" ref="cpt_type_dct"/>
+    <field name="parent_id" ref="pc_441"/>
+  </record>
+  <record id="pc_4417" model="account.account.template">
+    <field name="name">Fournisseurs - factures non parvenues</field>
+    <field name="code">4417</field>
+    <field name="type">payable</field>
+    <field name="user_type" ref="cpt_type_dct"/>
+    <field name="parent_id" ref="pc_441"/>
+  </record>
+  <record id="pc_4418" model="account.account.template">
+    <field name="name">Autres fournisseurs et comptes rattachés</field>
+    <field name="code">4418</field>
+    <field name="type">payable</field>
+    <field name="user_type" ref="cpt_type_dct"/>
+    <field name="parent_id" ref="pc_441"/>
+  </record>
+  <record id="pc_446" model="account.account.template">
+    <field name="name">Comptes d'associés - créditeurs</field>
+    <field name="code">446</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_44"/>
+  </record>
+   <record id="pc_4463" model="account.account.template">
+    <field name="name">Comptes courants des associés créditeurs</field>
+    <field name="code">4463</field>
+    <field name="type">payable</field>
+    <field name="user_type" ref="cpt_type_dct"/>
+    <field name="parent_id" ref="pc_446"/>
+  </record>
+   <record id="pc_4468" model="account.account.template">
+    <field name="name">Autres comptes d'associés - créditeurs</field>
+    <field name="code">4468</field>
+    <field name="type">payable</field>
+    <field name="user_type" ref="cpt_type_dct"/>
+    <field name="parent_id" ref="pc_446"/>
+  </record>
+  <record id="pc_447" model="account.account.template">
+    <field name="name">Créanciers divers</field>
+    <field name="code">447</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_44"/>
+  </record>
+   <record id="pc_4472" model="account.account.template">
+    <field name="name">Clients créditeurs , avances et acomptes</field>
+    <field name="code">4472</field>
+    <field name="type">payable</field>
+    <field name="user_type" ref="cpt_type_dct"/>
+    <field name="parent_id" ref="pc_447"/>
+  </record>
+   <record id="pc_4473" model="account.account.template">
+    <field name="name">Personnel - créditeur</field>
+    <field name="code">4473</field>
+    <field name="type">payable</field>
+    <field name="user_type" ref="cpt_type_dct"/>
+    <field name="parent_id" ref="pc_447"/>
+  </record>
+   <record id="pc_4474" model="account.account.template">
+    <field name="name">Organismes sociaux</field>
+    <field name="code">4474</field>
+    <field name="type">payable</field>
+    <field name="user_type" ref="cpt_type_dct"/>
+    <field name="parent_id" ref="pc_447"/>
+  </record>
+  <record id="pc_4475" model="account.account.template">
+    <field name="name">Etat - créditeur</field>
+    <field name="code">4475</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_447"/>
+  </record>
+  <record id="pc_44752" model="account.account.template">
+    <field name="name">Etat - taxe urbaine,taxe dédilité et patente</field>
+    <field name="code">44752</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_tax"/>
+    <field name="parent_id" ref="pc_4475"/>
+  </record>
+  <record id="pc_44755" model="account.account.template">
+    <field name="name">Etat - TVA facturée</field>
+    <field name="code">44755</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_tax"/>
+    <field name="parent_id" ref="pc_4475"/>
+  </record>
+  <record id="pc_4475507" model="account.account.template">
+    <field name="name">Etat - TVA facturée 7%</field>
+    <field name="code">4475507</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_tax"/>
+    <field name="parent_id" ref="pc_44755"/>
+  </record>
+   <record id="pc_4475510" model="account.account.template">
+    <field name="name">Etat - TVA facturée 10%</field>
+    <field name="code">4475510</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_tax"/>
+    <field name="parent_id" ref="pc_44755"/>
+  </record>
+   <record id="pc_4475514" model="account.account.template">
+    <field name="name">Etat - TVA facturée 14%</field>
+    <field name="code">4475514</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_tax"/>
+    <field name="parent_id" ref="pc_44755"/>
+  </record>
+   <record id="pc_4475520" model="account.account.template">
+    <field name="name">Etat - TVA facturée 20%</field>
+    <field name="code">4475520</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_tax"/>
+    <field name="parent_id" ref="pc_44755"/>
+  </record>
+  
+  <record id="pc_44756" model="account.account.template">
+    <field name="name">Etat - TVA due(suivant déclarations)</field>
+    <field name="code">44756</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_tax"/>
+    <field name="parent_id" ref="pc_4475"/>
+  </record>
+  <record id="pc_4478" model="account.account.template">
+    <field name="name">Autres créanciers divers</field>
+    <field name="code">4478</field>
+    <field name="type">payable</field>
+    <field name="user_type" ref="cpt_type_dct"/>
+    <field name="parent_id" ref="pc_447"/>
+  </record>
+  
+  <record id="pc_449" model="account.account.template">
+    <field name="name">Comptes de régularisation - passif</field>
+    <field name="code">449</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_44"/>
+  </record>
+  <record id="pc_4491" model="account.account.template">
+    <field name="name">Produits constatés d'avance</field>
+    <field name="code">4491</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_reg"/>
+    <field name="parent_id" ref="pc_449"/>
+  </record>
+  <record id="pc_4497" model="account.account.template">
+    <field name="name">Comptes transitoires ou d'attente - créditeurs</field>
+    <field name="code">4497</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_reg"/>
+    <field name="parent_id" ref="pc_449"/>
+  </record>
+  <record id="pc_45" model="account.account.template">
+    <field name="name">AUTRES PROVISIONS POUR RISQUES ET CHARGES</field>
+    <field name="code">45</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c4"/>
+  </record>
+  <record id="pc_450" model="account.account.template">
+    <field name="name">Autres provisions pour risques et charges</field>
+    <field name="code">450</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_45"/>
+  </record>
+   <record id="pc_c5" model="account.account.template">
+    <field name="name">COMPTES DE TRESORERIE</field>
+    <field name="code">CLASSE 5</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c15"/>
+  </record>
+  <record id="pc_51" model="account.account.template">
+    <field name="name">TRESORERIE - ACTIF</field>
+    <field name="code">51</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c5"/>
+  </record>
+  <record id="pc_511" model="account.account.template">
+    <field name="name">Chèques et valeurs à  encaisser</field>
+    <field name="code">511</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_51"/>
+  </record>
+  <record id="pc_5111" model="account.account.template">
+    <field name="name">Chèques à  encaisser ou à  l'encaissement</field>
+    <field name="code">5111</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_liq"/>
+    <field name="parent_id" ref="pc_511"/>
+  </record>
+  <record id="pc_5113" model="account.account.template">
+    <field name="name">Effets à  encaisser ou à  l'encaissement</field>
+    <field name="code">5113</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_liq"/>
+    <field name="parent_id" ref="pc_511"/>
+  </record>
+   <record id="pc_5115" model="account.account.template">
+    <field name="name">Virement de fonds</field>
+    <field name="code">5115</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_liq"/>
+    <field name="parent_id" ref="pc_511"/>
+  </record>
+  <record id="pc_5118" model="account.account.template">
+    <field name="name">Autres valeurs à  encaisser</field>
+    <field name="code">5118</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_liq"/>
+    <field name="parent_id" ref="pc_511"/>
+  </record>
+  <record id="pc_514" model="account.account.template">
+    <field name="name">Banques, Trésorerie Générale et chèques postaux débiteurs</field>
+    <field name="code">514</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_51"/>
+  </record>
+  <record id="pc_5141" model="account.account.template">
+    <field name="name">Banques (solde débiteur)</field>
+    <field name="code">5141</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_liq"/>
+    <field name="parent_id" ref="pc_514"/>
+  </record>
+  <record id="pc_5143" model="account.account.template">
+    <field name="name">Trésorerie Générale</field>
+    <field name="code">5143</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_liq"/>
+    <field name="parent_id" ref="pc_514"/>
+  </record>
+  <record id="pc_5146" model="account.account.template">
+    <field name="name">Chèques postaux</field>
+    <field name="code">5146</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_liq"/>
+    <field name="parent_id" ref="pc_514"/>
+  </record>
+  <record id="pc_5148" model="account.account.template">
+    <field name="name">Autres établissements financiers et assimilés (soldes débiteurs)</field>
+    <field name="code">5148</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_liq"/>
+    <field name="parent_id" ref="pc_514"/>
+  </record>
+  <record id="pc_516" model="account.account.template">
+    <field name="name">Caisses, régies d'avances et accréditifs</field>
+    <field name="code">516</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_51"/>
+  </record>
+  <record id="pc_5161" model="account.account.template">
+    <field name="name">Caisses</field>
+    <field name="code">5161</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_liq"/>
+    <field name="parent_id" ref="pc_516"/>
+  </record>
+  <record id="pc_5165" model="account.account.template">
+    <field name="name">Régies d'avances et accréditifs</field>
+    <field name="code">5165</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_liq"/>
+    <field name="parent_id" ref="pc_516"/>
+  </record>
+  <record id="pc_55" model="account.account.template">
+    <field name="name">TRESORERIE - PASSIF</field>
+    <field name="code">55</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c5"/>
+  </record>
+  <record id="pc_552" model="account.account.template">
+    <field name="name">Crédits d'escompte</field>
+    <field name="code">552</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_55"/>
+  </record>
+  <record id="pc_5520" model="account.account.template">
+    <field name="name">Crédits d'escompte</field>
+    <field name="code">5520</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_liq"/>
+    <field name="parent_id" ref="pc_552"/>
+  </record>
+  <record id="pc_553" model="account.account.template">
+    <field name="name">Crédits de trésorerie</field>
+    <field name="code">553</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_55"/>
+  </record>
+  <record id="pc_5530" model="account.account.template">
+    <field name="name">Crédits de trésorerie</field>
+    <field name="code">5530</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_liq"/>
+    <field name="parent_id" ref="pc_553"/>
+  </record>
+  <record id="pc_554" model="account.account.template">
+    <field name="name">Banques (solde créditeur)</field>
+    <field name="code">554</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_55"/>
+  </record>
+  <record id="pc_5541" model="account.account.template">
+    <field name="name">Banques (solde créditeur)</field>
+    <field name="code">5541</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_liq"/>
+    <field name="parent_id" ref="pc_554"/>
+  </record>
+  <record id="pc_5548" model="account.account.template">
+    <field name="name">Autres établissements financiers et assimilés (soldes créditeurs)</field>
+    <field name="code">5548</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_liq"/>
+    <field name="parent_id" ref="pc_554"/>
+  </record>
+  <record id="pc_59" model="account.account.template">
+    <field name="name">PROVISIONS POUR DEPRECIATION DES COMPTES DE TRESORERIE</field>
+    <field name="code">59</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c5"/>
+  </record>
+  <record id="pc_590" model="account.account.template">
+    <field name="name">Provisions pour dépréciation des comptes de trésorerie</field>
+    <field name="code">590</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_59"/>
+  </record>
+  <record id="pc_5900" model="account.account.template">
+    <field name="name">Provisions pour dépréciation des comptes de trésorerie</field>
+    <field name="code">5900</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_liq"/>
+    <field name="parent_id" ref="pc_590"/>
+  </record>
+  <record id="pc_c6" model="account.account.template">
+    <field name="name">COMPTES DE CHARGES</field>
+    <field name="code">CLASSE 6</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c68"/>
+  </record>
+  <record id="pc_61" model="account.account.template">
+    <field name="name">CHARGES D'EXPLOITATION</field>
+    <field name="code">61</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c6"/>
+  </record>
+  <record id="pc_611" model="account.account.template">
+    <field name="name">Achats revendus de marchandises</field>
+    <field name="code">611</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_61"/>
+  </record>
+  <record id="pc_6111" model="account.account.template">
+    <field name="name">Achats de marchandises</field>
+    <field name="code">6111</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_ach"/>
+    <field name="parent_id" ref="pc_611"/>
+  </record>
+  <record id="pc_6114" model="account.account.template">
+    <field name="name">Variation de stocks de marchandises</field>
+    <field name="code">6114</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_ach"/>
+    <field name="parent_id" ref="pc_611"/>
+  </record>
+  <record id="pc_6118" model="account.account.template">
+    <field name="name">Achats revendus de marchandises des exercices antérieurs</field>
+    <field name="code">6118</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_ach"/>
+    <field name="parent_id" ref="pc_611"/>
+  </record>
+  <record id="pc_6119" model="account.account.template">
+    <field name="name">Rabais, remises et ristournes obtenus sur achats de marchandises</field>
+    <field name="code">6119</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_ach"/>
+    <field name="parent_id" ref="pc_611"/>
+  </record>
+  <record id="pc_612" model="account.account.template">
+    <field name="name">Achats consommés de matières et fournitures</field>
+    <field name="code">612</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_61"/>
+  </record>
+  <record id="pc_6121" model="account.account.template">
+    <field name="name">Achats de matières premières</field>
+    <field name="code">6121</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_ach"/>
+    <field name="parent_id" ref="pc_612"/>
+  </record>
+  <record id="pc_6122" model="account.account.template">
+    <field name="name">Achats de matières et fournitures consommables</field>
+    <field name="code">6122</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_ach"/>
+    <field name="parent_id" ref="pc_612"/>
+  </record>
+  <record id="pc_6123" model="account.account.template">
+    <field name="name">Achats d'emballages</field>
+    <field name="code">6123</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_ach"/>
+    <field name="parent_id" ref="pc_612"/>
+  </record>
+  <record id="pc_6124" model="account.account.template">
+    <field name="name">Variation des stocks de matières et fournitures</field>
+    <field name="code">6124</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_ach"/>
+    <field name="parent_id" ref="pc_612"/>
+  </record>
+  <record id="pc_6125" model="account.account.template">
+    <field name="name">Achats non stockés de matières et fournitures</field>
+    <field name="code">6125</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_ach"/>
+    <field name="parent_id" ref="pc_612"/>
+  </record>
+  <record id="pc_6126" model="account.account.template">
+    <field name="name">Achats de service</field>
+    <field name="code">6126</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_ach"/>
+    <field name="parent_id" ref="pc_612"/>
+  </record>
+  <record id="pc_6128" model="account.account.template">
+    <field name="name">Achats de matières et de fournitures des exercices antérieurs</field>
+    <field name="code">6128</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_ach"/>
+    <field name="parent_id" ref="pc_612"/>
+  </record>
+  <record id="pc_6129" model="account.account.template">
+    <field name="name">Rabais, remises et ristournes obtenus sur achats consommés de matières et fournitures</field>
+    <field name="code">6129</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_ach"/>
+    <field name="parent_id" ref="pc_612"/>
+  </record>
+  <record id="pc_613" model="account.account.template">
+    <field name="name">Autres charges externes 1</field>
+    <field name="code">613</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_61"/>
+  </record>
+  <record id="pc_6131" model="account.account.template">
+    <field name="name">Locations et charges locatives</field>
+    <field name="code">6131</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_613"/>
+  </record>
+  <record id="pc_6132" model="account.account.template">
+    <field name="name">Redevances de crédit-bail</field>
+    <field name="code">6132</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_613"/>
+  </record>
+  <record id="pc_6133" model="account.account.template">
+    <field name="name">Entretien et réparations</field>
+    <field name="code">6133</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_613"/>
+  </record>
+  <record id="pc_6134" model="account.account.template">
+    <field name="name">Primes d'assurances</field>
+    <field name="code">6134</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_613"/>
+  </record>
+  <record id="pc_6135" model="account.account.template">
+    <field name="name">Rémunérations du personnel extérieur à  l'entreprise</field>
+    <field name="code">6135</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_613"/>
+  </record>
+  <record id="pc_6136" model="account.account.template">
+    <field name="name">Rémunérations d'intermédiaires et honoraires</field>
+    <field name="code">6136</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_613"/>
+  </record>
+  <record id="pc_6137" model="account.account.template">
+    <field name="name">Redevances pour brevets, marques, droits et valeurs similaires</field>
+    <field name="code">6137</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_613"/>
+  </record>
+   <record id="pc_614" model="account.account.template">
+    <field name="name">Autres charges externes 2</field>
+    <field name="code">614</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_61"/>
+  </record>
+  <record id="pc_6141" model="account.account.template">
+    <field name="name">Études, recherches et documentation</field>
+    <field name="code">6141</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_614"/>
+  </record>
+   <record id="pc_6142" model="account.account.template">
+    <field name="name">Transports</field>
+    <field name="code">6142</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_614"/>
+  </record>
+  <record id="pc_6143" model="account.account.template">
+    <field name="name">Déplacements, missions et réceptions</field>
+    <field name="code">6143</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_614"/>
+  </record>
+  <record id="pc_6144" model="account.account.template">
+    <field name="name">Publicité, publications et relations publiques</field>
+    <field name="code">6144</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_614"/>
+  </record>
+   <record id="pc_6145" model="account.account.template">
+    <field name="name">Frais postaux et frais de télécommunication</field>
+    <field name="code">6145</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_614"/>
+  </record>
+   <record id="pc_6146" model="account.account.template">
+    <field name="name">Cotisations et dons</field>
+    <field name="code">6146</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_614"/>
+  </record>
+   <record id="pc_6147" model="account.account.template">
+    <field name="name">Services bancaires</field>
+    <field name="code">6147</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_614"/>
+  </record>
+  <record id="pc_6148" model="account.account.template">
+    <field name="name">Autres charges externes des exercices antérieurs</field>
+    <field name="code">6148</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_614"/>
+  </record>
+  <record id="pc_6149" model="account.account.template">
+    <field name="name">Rabais, remises et ristournes obtenus sur autres charges externes</field>
+    <field name="code">6149</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_614"/>
+  </record>
+   <record id="pc_616" model="account.account.template">
+    <field name="name">Impôts et taxes</field>
+    <field name="code">616</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_61"/>
+  </record>
+  <record id="pc_6161" model="account.account.template">
+    <field name="name">Impôts et taxes directs</field>
+    <field name="code">6161</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_616"/>
+  </record>
+  <record id="pc_6165" model="account.account.template">
+    <field name="name">Impôts et taxes indirects</field>
+    <field name="code">6165</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_616"/>
+  </record>
+  <record id="pc_6167" model="account.account.template">
+    <field name="name">Impôts, taxes et droits assimilés</field>
+    <field name="code">6167</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_616"/>
+  </record>
+  <record id="pc_6168" model="account.account.template">
+    <field name="name">Impôts et taxes des exercices antérieurs</field>
+    <field name="code">6168</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_616"/>
+  </record>
+  <record id="pc_617" model="account.account.template">
+    <field name="name">Charges de personnel</field>
+    <field name="code">617</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_61"/>
+  </record>
+  <record id="pc_6171" model="account.account.template">
+    <field name="name">Rémunérations du personnel</field>
+    <field name="code">6171</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_per"/>
+    <field name="parent_id" ref="pc_617"/>
+  </record>
+  <record id="pc_6174" model="account.account.template">
+    <field name="name">Charges sociales</field>
+    <field name="code">6174</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_per"/>
+    <field name="parent_id" ref="pc_617"/>
+  </record>
+  <record id="pc_6176" model="account.account.template">
+    <field name="name">Charges sociales diverses</field>
+    <field name="code">6176</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_per"/>
+    <field name="parent_id" ref="pc_617"/>
+  </record>
+  <record id="pc_6177" model="account.account.template">
+    <field name="name">Rémunération de l'exploitant</field>
+    <field name="code">6177</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_per"/>
+    <field name="parent_id" ref="pc_617"/>
+  </record>
+  <record id="pc_6178" model="account.account.template">
+    <field name="name">Charges du personnel des exercices antérieurs</field>
+    <field name="code">6178</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_per"/>
+    <field name="parent_id" ref="pc_617"/>
+  </record>
+  <record id="pc_618" model="account.account.template">
+    <field name="name">Autres charges d'exploitation</field>
+    <field name="code">618</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_61"/>
+  </record>
+  <record id="pc_6180" model="account.account.template">
+    <field name="name">Autres charges d'exploitation</field>
+    <field name="code">6180</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_618"/>
+  </record>
+   <record id="pc_619" model="account.account.template">
+    <field name="name">Dotations d'exploitation</field>
+    <field name="code">619</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_61"/>
+  </record>
+  <record id="pc_6191" model="account.account.template">
+    <field name="name">Dotations d'exploitation aux amortissements de l'immobilisation en non valeur</field>
+    <field name="code">6191</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_619"/>
+  </record>
+  <record id="pc_6192" model="account.account.template">
+    <field name="name">Dotations d'exploitation aux amortissements des immobilisations incorporelles</field>
+    <field name="code">6192</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_619"/>
+  </record>
+  <record id="pc_6193" model="account.account.template">
+    <field name="name">Dotations d'exploitation aux amortissements des immobilisations corporelles</field>
+    <field name="code">6193</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_619"/>
+  </record>
+  <record id="pc_6194" model="account.account.template">
+    <field name="name">Dotations d'exploitation aux provisions pour dépréciation des immobilisations</field>
+    <field name="code">6194</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_619"/>
+  </record>
+  <record id="pc_6195" model="account.account.template">
+    <field name="name">Dotations d'exploitation aux provisions pour risques et charges</field>
+    <field name="code">6195</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_619"/>
+  </record>
+  <record id="pc_6196" model="account.account.template">
+    <field name="name">Dotations d'exploitation aux provisions pour dépréciations de l'actif circulant</field>
+    <field name="code">6196</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_619"/>
+  </record>
+  <record id="pc_6197" model="account.account.template">
+    <field name="name">Dotations d'exploitation aux provisions pour risques et charges momentanés</field>
+    <field name="code">6197</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_619"/>
+  </record>
+  <record id="pc_6198" model="account.account.template">
+    <field name="name">Dotations d'exploitation des exercices antérieurs</field>
+    <field name="code">6198</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_619"/>
+  </record>
+    <record id="pc_63" model="account.account.template">
+    <field name="name">CHARGES FINANCIERES</field>
+    <field name="code">63</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c6"/>
+  </record>
+   <record id="pc_630" model="account.account.template">
+    <field name="name">CHARGES FINANCIERES</field>
+    <field name="code">630</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c6"/>
+  </record>
+  <record id="pc_6301" model="account.account.template">
+    <field name="name">Charges d'intérêts</field>
+    <field name="code">6301</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_630"/>
+  </record>
+  <record id="pc_6303" model="account.account.template">
+    <field name="name">Pertes de change</field>
+    <field name="code">6303</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_630"/>
+  </record>
+  <record id="pc_6307" model="account.account.template">
+    <field name="name">Charges financières diverses</field>
+    <field name="code">6307</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_630"/>
+  </record>
+  <record id="pc_6308" model="account.account.template">
+    <field name="name">Dotations financières</field>
+    <field name="code">6308</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_63"/>
+  </record>
+   <record id="pc_65" model="account.account.template">
+    <field name="name">CHARGES NON COURANTES</field>
+    <field name="code">65</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c6"/>
+  </record>
+   <record id="pc_650" model="account.account.template">
+    <field name="name">CHARGES NON COURANTES</field>
+    <field name="code">650</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_65"/>
+  </record>
+  <record id="pc_6501" model="account.account.template">
+    <field name="name">Valeurs nettes d'amortissements des immobilisations cédées ( V.N.A )</field>
+    <field name="code">6501</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_650"/>
+  </record>
+  <record id="pc_6507" model="account.account.template">
+    <field name="name">charges non courantes diverses</field>
+    <field name="code">6507</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_650"/>
+  </record>
+  <record id="pc_6508" model="account.account.template">
+    <field name="name">Dotations non courantes</field>
+    <field name="code">6508</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_650"/>
+  </record>
+  <record id="pc_67" model="account.account.template">
+    <field name="name">IMPOTS SUR LES RESULTATS</field>
+    <field name="code">67</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c6"/>
+  </record>
+  <record id="pc_670" model="account.account.template">
+    <field name="name">Impôts sur les résultats</field>
+    <field name="code">670</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_67"/>
+  </record>
+  <record id="pc_6701" model="account.account.template">
+    <field name="name">Impôts sur les bénéfices</field>
+    <field name="code">6701</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_670"/>
+  </record>
+  <record id="pc_6705" model="account.account.template">
+    <field name="name">Imposition minimale annuelle des sociétés</field>
+    <field name="code">6705</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_670"/>
+  </record>
+  <record id="pc_6708" model="account.account.template">
+    <field name="name">Rappels et dégrèvements d'impôts sur les résultats</field>
+    <field name="code">6708</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_aut"/>
+    <field name="parent_id" ref="pc_670"/>
+  </record>
+  <record id="pc_c7" model="account.account.template">
+    <field name="name">COMPTES DE PRODUITS</field>
+    <field name="code">CLASSE 7</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c68"/>
+  </record>
+  <record id="pc_71" model="account.account.template">
+    <field name="name">PRODUITS D'EXPLOITATION</field>
+    <field name="code">71</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c7"/>
+  </record>
+  <record id="pc_711" model="account.account.template">
+    <field name="name">Ventes de marchandises</field>
+    <field name="code">711</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_71"/>
+  </record>
+  <record id="pc_7110" model="account.account.template">
+    <field name="name">Ventes de marchandises</field>
+    <field name="code">7110</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_711"/>
+  </record>
+   <record id="pc_712" model="account.account.template">
+    <field name="name">Ventes de biens et services produits</field>
+    <field name="code">712</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_71"/>
+  </record>
+  <record id="pc_7121" model="account.account.template">
+    <field name="name">Ventes de biens produits au Maroc</field>
+    <field name="code">7121</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_712"/>
+  </record>
+  <record id="pc_7122" model="account.account.template">
+    <field name="name">Ventes de biens produits à  l'étranger</field>
+    <field name="code">7122</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_712"/>
+  </record>
+   <record id="pc_7124" model="account.account.template">
+    <field name="name">Ventes de services produits au Maroc</field>
+    <field name="code">7124</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_712"/>
+  </record>
+  <record id="pc_7125" model="account.account.template">
+    <field name="name">Ventes de services produits à  l'étranger</field>
+    <field name="code">7125</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_712"/>
+  </record>
+  <record id="pc_7126" model="account.account.template">
+    <field name="name">Redevances pour brevets, marques, droits et valeurs similaires</field>
+    <field name="code">7126</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_712"/>
+  </record>
+  <record id="pc_7127" model="account.account.template">
+    <field name="name">Ventes de produits accessoires</field>
+    <field name="code">7127</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_712"/>
+  </record>
+  <record id="pc_7128" model="account.account.template">
+    <field name="name">Ventes de biens et services produits des exercices antérieurs</field>
+    <field name="code">7128</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_712"/>
+  </record>
+  <record id="pc_7129" model="account.account.template">
+    <field name="name">Rabais, remises et ristournes accordés par l'entreprise</field>
+    <field name="code">7129</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_712"/>
+  </record>
+   <record id="pc_713" model="account.account.template">
+    <field name="name">Variation des stocks de produits</field>
+    <field name="code">713</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_71"/>
+  </record>
+  <record id="pc_7131" model="account.account.template">
+    <field name="name">Variation des stocks de produits en cours</field>
+    <field name="code">7131</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_713"/>
+  </record>
+  <record id="pc_7132" model="account.account.template">
+    <field name="name">Variation des stocks de biens produits</field>
+    <field name="code">7132</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_713"/>
+  </record>
+  <record id="pc_7134" model="account.account.template">
+    <field name="name">Variation des stocks de services en cours</field>
+    <field name="code">7134</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_713"/>
+  </record>
+  <record id="pc_714" model="account.account.template">
+    <field name="name">Immobilisations produites par l'entreprise pour elle même</field>
+    <field name="code">714</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_71"/>
+  </record>
+  <record id="pc_7140" model="account.account.template">
+    <field name="name">Immobilisations produites par l'entreprise pour elle même</field>
+    <field name="code">7140</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_714"/>
+  </record>
+  <record id="pc_718" model="account.account.template">
+    <field name="name">Autres produits d'exploitation</field>
+    <field name="code">718</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_71"/>
+  </record>
+  <record id="pc_7180" model="account.account.template">
+    <field name="name">Autres produits d'exploitation</field>
+    <field name="code">7180</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_718"/>
+  </record>
+  <record id="pc_719" model="account.account.template">
+    <field name="name">Reprise d'exploitation, transferts de charges</field>
+    <field name="code">719</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_71"/>
+  </record>
+  <record id="pc_7190" model="account.account.template">
+    <field name="name">Reprise d'exploitation, transferts de charges</field>
+    <field name="code">7190</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_719"/>
+  </record>
+   <record id="pc_73" model="account.account.template">
+    <field name="name">PRODUITS FINANCIERS</field>
+    <field name="code">73</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c7"/>
+  </record>
+   <record id="pc_730" model="account.account.template">
+    <field name="name">PRODUITS FINANCIERS</field>
+    <field name="code">730</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_73"/>
+  </record>
+   <record id="pc_7301" model="account.account.template">
+    <field name="name">Produits des titres</field>
+    <field name="code">7301</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_730"/>
+  </record>
+   <record id="pc_7303" model="account.account.template">
+    <field name="name">Gains de change</field>
+    <field name="code">7303</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_730"/>
+  </record>
+   <record id="pc_7307" model="account.account.template">
+    <field name="name">Produits financiers divers</field>
+    <field name="code">7307</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_730"/>
+  </record>
+   <record id="pc_7308" model="account.account.template">
+    <field name="name">Reprises financières; transferts de charges financières </field>
+    <field name="code">7308</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_730"/>
+  </record>
+  <record id="pc_75" model="account.account.template">
+    <field name="name">PRODUITS NON COURANTS</field>
+    <field name="code">75</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c7"/>
+  </record>
+  <record id="pc_750" model="account.account.template">
+    <field name="name">PRODUITS NON COURANTS</field>
+    <field name="code">750</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_75"/>
+  </record>
+  <record id="pc_7501" model="account.account.template">
+    <field name="name">Produits des cessions d'immobilisations</field>
+    <field name="code">7501</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_750"/>
+  </record>
+   <record id="pc_7507" model="account.account.template">
+    <field name="name">Produits non courants divers</field>
+    <field name="code">7507</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_750"/>
+  </record>
+   <record id="pc_7508" model="account.account.template">
+    <field name="name">Reprises non cour ; transferts de charges non cour</field>
+    <field name="code">7508</field>
+    <field name="type">other</field>
+    <field name="user_type" ref="cpt_type_pdt"/>
+    <field name="parent_id" ref="pc_750"/>
+  </record>
+  <record id="pc_c8" model="account.account.template">
+    <field name="name">COMPTES DE RESULTATS</field>
+    <field name="code">CLASSE 8</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c68"/>
+  </record>
+  <record id="pc_81" model="account.account.template">
+    <field name="name">RESULTAT D'EXPLOITATION</field>
+    <field name="code">81</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c8"/>
+  </record>
+   <record id="pc_810" model="account.account.template">
+    <field name="name">RESULTAT D'EXPLOITATION</field>
+    <field name="code">810</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_81"/>
+  </record>
+   <record id="pc_811" model="account.account.template">
+    <field name="name">Marge brute</field>
+    <field name="code">811</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_81"/>
+  </record>
+  <record id="pc_814" model="account.account.template">
+    <field name="name">Valeur ajoutée</field>
+    <field name="code">814</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_81"/>
+  </record>
+  <record id="pc_817" model="account.account.template">
+    <field name="name">Excédent brut d'exploitation</field>
+    <field name="code">817</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_81"/>
+  </record>
+  <record id="pc_8171" model="account.account.template">
+    <field name="name">Excédent brut d'exploitation (créditeur)</field>
+    <field name="code">8171</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_817"/>
+  </record>
+  <record id="pc_8179" model="account.account.template">
+    <field name="name">Insuffisance brute d'exploitation (débiteur)</field>
+    <field name="code">8179</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_817"/>
+  </record>
+  <record id="pc_84" model="account.account.template">
+    <field name="name">RESULTAT COURANT</field>
+    <field name="code">84</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c8"/>
+  </record>
+  <record id="pc_840" model="account.account.template">
+    <field name="name">RESULTAT COURANT</field>
+    <field name="code">840</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_84"/>
+  </record>
+  <record id="pc_85" model="account.account.template">
+    <field name="name">RESULTAT NON COURANT</field>
+    <field name="code">85</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c8"/>
+  </record>
+  <record id="pc_850" model="account.account.template">
+    <field name="name">RESULTAT NON COURANT</field>
+    <field name="code">850</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_85"/>
+  </record>
+  <record id="pc_86" model="account.account.template">
+    <field name="name">RESULTAT AVANT IMPOTS</field>
+    <field name="code">86</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c8"/>
+  </record>
+  <record id="pc_860" model="account.account.template">
+    <field name="name">RESULTAT AVANT IMPOTS</field>
+    <field name="code">860</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_86"/>
+  </record>
+  <record id="pc_88" model="account.account.template">
+    <field name="name">RESULTAT APRES IMPOTS</field>
+    <field name="code">88</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_c8"/>
+  </record>
+  <record id="pc_880" model="account.account.template">
+    <field name="name">RESULTAT APRES IMPOTS</field>
+    <field name="code">880</field>
+    <field name="type">view</field>
+    <field name="user_type" ref="cpt_type_vue"/>
+    <field name="parent_id" ref="pc_88"/>
+  </record>
+  
+  </data>
+</openerp>
+  

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+ <template id="account_reportMA" inherit_id="account.report_salepurchasejournal">
+            <xpath expr="//t[@t-call='report.html_container']" position="replace">
+     <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="o">
+        	<t t-esc="total_pages(o.period_id.id, o.journal_id.id)" />
+        	</t>
+        	<t t-foreach="docs" t-as="o">
+        	<t t-foreach="lines_tab(o.period_id.id, o.journal_id.id)" t-as="lines">
+        		<template id="account_header" inherit_id="report.external_layout_header">
+            <xpath expr="//div[@class='header']" position="replace">
+            	<div class="header" >
+        <div class="row" style="margin-top:20px">
+            <div class="col-xs-3" >
+                <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height:50px;"/>
+            </div>
+            <div class="col-xs-9 text-right" style="margin-top:32px">
+                            <strong>Date: </strong>
+                            <span t-esc="date_jour()" style="color: #000066;" />
+                            
+                        </div>
+            
+        </div>
+        <div class="row ">
+            <div class="col-xs-12">
+                <div style="border-bottom: 1px solid black;margin-bottom:2px;margin-top:5px"></div>
+            </div>
+        </div>
+        
+           <div class="row ">
+                        <div class="col-xs-12">
+                   <h4> <span t-field="o.journal_id.name" style="color: #000066;"/></h4> 
+                    </div>
+                     </div>    
+                
+            <div class="row ">
+                		<div class="col-xs-8">
+                            <strong>Chart of Accounts:</strong>
+                            <span t-esc="get_account(data)" style="color: #000066;"/>
+                            
+                        </div>
+                        
+                     <div class="col-xs-4">
+                            <strong>Fiscal Year:</strong>
+                            <span t-esc="get_fiscalyear(data)" style="color: #000066;"/>
+                            
+                        </div>
+                        
+                        
+                        
+                    </div>  
+                    
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <strong>Entries Sorted By:
+                            	
+                            	</strong>
+                            <span t-if="data['form'].get('sort_selection') == 'am.name'" style="color: #000066;">Journal Entry Number </span>
+                            <span t-if="data['form'].get('sort_selection') == 'l.date'" style="color: #000066;">Date</span>
+                        </div>
+                        
+                       <div class="col-xs-4">
+                            <strong>Period: </strong>
+                            <span t-esc="o.period_id.name" style="color: #000066;"/>
+                            
+                        </div>
+                    </div>      
+
+         
+    </div>
+            </xpath>
+            </template>	
+            
+                <div class="page">
+                	
+                                     
+                    
+                    
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="info">
+                                <th>Ligne</th>
+                                <th>Date</th>
+                                <th>Pièce</th>
+                                <th>Libellé</th>
+                                <th>Compte</th>
+                                <th>Nom</th>                 
+                                <th>Let</th>
+                                <th>Debit</th>
+                                <th>Credit</th>
+                                <th t-if="display_currency(data)">Currency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="lines" t-as="line">
+                                <td><span t-esc="line.id &lt;&gt; '/' and line.id or ('*'+str(line.id))"/></td>
+                                <td><span t-esc="formatLang(line.date,date=True)"/></td>
+                                <td><span t-esc="line.move_id and line.move_id.name"/></td>
+                                <td><span t-esc="line.name[:35]"/></td>
+                                <td><span t-field="line.account_id.code"/></td>
+                                <td><span t-esc="line.account_id and line.account_id.name"/></td>                                
+                              	<td><span t-esc="line.let"/></td>
+                                <td><span t-esc="formatLang(line.debit, currency_obj=res_company.currency_id)"/></td>
+                                <td><span t-esc="formatLang(line.credit, currency_obj=res_company.currency_id)"/></td>
+                                <td t-if="display_currency(data)">
+                                    <span t-esc="formatLang(line.amount_currency, currency_obj=line.currency_id) if line.amount_currency else ''"/>
+                                </td>
+                            </tr>
+                            <tr class="danger">
+                            	<td></td>
+                            	<td></td>
+                            	<td></td>
+                            	<td></td>
+                            	<td></td>
+                            	<td></td>
+                            	<td><strong>Total</strong></td>
+                            	<td><strong t-esc="formatLang(somme_debit(lines), currency_obj=res_company.currency_id)"/></td>
+                            	<td><strong t-esc="formatLang(somme_credit(lines), currency_obj=res_company.currency_id)"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+					<t t-if="check_end_page()">
+                    <div class="row">
+                        <div class="col-xs-4 pull-right">
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td><strong>Total</strong></td>
+                                    <td><strong t-esc="formatLang(sum_debit(o.period_id.id, o.journal_id.id), currency_obj=res_company.currency_id)"/></td>
+                                    <td><strong t-esc="formatLang(sum_credit(o.period_id.id, o.journal_id.id), currency_obj=res_company.currency_id)"/></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                   </t>
+					 </div>
+					 
+                   		<template id="account_footer" inherit_id="report.external_layout_footer">
+            <xpath expr="//div[@class='footer']" position="replace">
+            	<div class="footer">
+        <div class="text-center" style="border-top: 1px solid black;">
+            <!--<ul t-if="not company.custom_footer" class="list-inline">
+                <li t-if="company.phone">Phone: <span t-field="company.phone"/></li>
+
+                <li t-if="company.fax and company.phone">&amp;bull;</li>
+                <li t-if="company.fax">Fax: <span t-field="company.fax"/></li>
+
+                <li t-if="company.email">&amp;bull;</li>
+                <li t-if="company.email">Email: <span t-field="company.email"/></li>
+
+                <li t-if="company.website">&amp;bull;</li>
+                <li t-if="company.website">Website: <span t-field="company.website"/></li>
+         </ul>-->
+
+          <!-->  <t t-if="company.custom_footer">
+                <span t-raw="company.rml_footer"/>
+         </t>-->
+
+            <ul class="list-inline">
+                <li>Page:</li>
+                <li><span t-esc="get_page()" /></li>
+                <li>/</li>
+                <li><span t-esc="get_number_page()" /></li>
+            </ul>
+        </div>
+    </div>      	
+            	</xpath>
+            	</template>
+       					 </t>
+    				</t>
+    				</t>
+            </xpath>
+       </template>
+    
+</data>
+</openerp>

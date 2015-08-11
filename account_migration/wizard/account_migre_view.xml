@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_account_migre">
+			 	<field name="name">account.migre.form</field>
+			 	<field name="model">account.migre</field>
+			 	<field name="arch" type="xml">
+             		<form string="Account migre">
+            		<group col="2" colspan="2">
+            		<field name="company_id"/>
+            		<field name="file"/>
+            		<field name="file_journal"/>
+            		<field name="file_ecriture"/>
+            		<field name="grouped_by_period"/>
+            		
+            		
+            		
+            		</group>
+            		
+            		
+            		
+            		<footer>
+                        <button string="Migrate" name="migration_plan_comptable" type="object" class="oe_highlight"/>
+                       
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+					</form>
+				</field>
+		</record>
+			
+		<record model="ir.actions.act_window" id="action_account_migre">
+			<field name="name">account_migrate</field>
+			<field name="res_model">account.migre</field>
+			<field name="view_mode">form</field>
+			<!--<field name="view_id" ref="view_account_migre"/>-->
+			<field name="target">new</field>
+		</record>
+		<menuitem id="account_migration" parent="account.menu_finance_configuration" sequence="15" />
+		<menuitem id="menu_account_migre" action="action_account_migre"
+			parent="account_migration" />
+				
+		</data>
+	</openerp>
