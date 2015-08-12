@@ -72,7 +72,7 @@ class journal_central_MA(journal_print):
             
             
             return True
-    # la methode qui permet de grouper tt les periodes par journal    
+    # la methode qui permet de grouper tt les compte par journal  et period    
     def grouped_periods(self,period_id,journal_id):
         lines=self.lines(period_id,journal_id)
         

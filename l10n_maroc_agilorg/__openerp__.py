@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (c) 2010 kazacube (http://kazacube.com).
+#    Copyright (c) 2015 agilorg  (http://www.agilorg.com/).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -42,7 +42,7 @@ produits et charges), balance générale à 6 colonnes, Grand livre cumulatif...
         'l10n_ma_tax_simple.xml',
         'l10n_ma_wizard.xml',    
         'l10n_ma_tax.xml',
-        'l10n_ma_journal.xml',
+        
         
         
     ],
