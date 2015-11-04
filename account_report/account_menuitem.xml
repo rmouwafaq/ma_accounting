@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <openerp>
 	<data>
-	 <menuitem id="menu_finance_reports_MA" name="ReportingMA" parent="account.menu_finance" sequence="13"/>
-	 <menuitem id="menu_finance_legal_statement_MA" name="Legal ReportsMA" parent="menu_finance_reports_MA"/>
+	 <menuitem id="menu_finance_reports_MA" name="Rapports_Marocain" parent="account.menu_finance" sequence="13"/>
+	 <menuitem id="menu_finance_legal_statement_MA" name="ReportsMA" parent="menu_finance_reports_MA"/>
 	 <menuitem
-            parent="menu_finance_legal_statement_MA"
+            parent="menu_finance_reports_MA"
             id="menu_journals_report_MA"
-            name="JournalsMA"/>
+            name="Journaux"/>
             
       <menuitem
-            name="Sale/Purchase Journals"
+            name="Journal_Détaillé"
             parent="menu_journals_report_MA"
             action="account.action_account_print_sale_purchase_journal"
             id="menu_account_print_sale_purchase_journal_MA"
@@ -17,26 +17,35 @@
             sequence="1"/>
    
 	 <menuitem
-            name="General Journals_MA"
+            name="Journal_General"
             parent="menu_journals_report_MA"
             action="account.action_account_general_journal"
             id="menu_account_general_journal_MA"
             icon="STOCK_PRINT"/> 
      
      <menuitem
-            name="Centralizing Journal"
+            name="Journal_Centralisateur"
             parent="menu_journals_report_MA"
             action="account.action_account_central_journal"
             id="menu_account_central_journal_MA"
             icon="STOCK_PRINT"/>   
             
-     <menuitem
-            icon="STOCK_PRINT"
-            name="General LedgerMA"
-            parent="menu_finance_reports_MA"
-            action="account.action_account_general_ledger_menu"
-            id="menu_general_ledger"
-           />                         
+     <menuitem 
+     	icon="STOCK_PRINT" 
+     	name="Grand_Livre" 
+     	parent="menu_finance_reports_MA" 
+     	action="account.action_account_general_ledger_menu" 
+     	id="menu_general_ledger"/><menuitem icon="STOCK_PRINT" 
+     	name="Balance" parent="menu_finance_reports_MA" 
+     	action="account.action_account_balance_menu" 
+     	id="menu_general_Balance"/>
+     	
+     	<menuitem 
+     		icon="STOCK_PRINT" 
+     		name="Balance" 
+     		parent="menu_finance_reports_MA" 
+     		action="account.action_account_balance_menu" 
+     		id="menu_general_Balance"/>                       
 	</data>
 </openerp>	
 			

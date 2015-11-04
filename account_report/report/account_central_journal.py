@@ -99,7 +99,7 @@ class journal_central_MA(journal_print):
         lines=self.lines_journal[journal_id]
          
         
-        nbr_bloc=15
+        nbr_bloc=14
         nbr_pages=ceil(float(len(lines))/float(nbr_bloc))
         
         self.nbr_pages=int(nbr_pages)
@@ -154,14 +154,14 @@ class journal_central_MA(journal_print):
     #la methode qui permet de numerotation total      
     def total_pages(self):
         total_records=0
-        nbr_bloc=12
-        nbr_pages=0
+        nbr_bloc=14
+        nbr_pages1=0
         for journal,lines in self.lines_journal.iteritems():
             total_records=len(lines)
-            nbr_pages=nbr_pages+int(ceil(float(total_records/float(nbr_bloc))))
+            nbr_pages1=nbr_pages1+int(ceil(float(total_records/float(nbr_bloc))))
         
         
-        return nbr_pages
+        return nbr_pages1
             
           
     def get_number_pages(self):

@@ -52,7 +52,7 @@ class journal_printMA(journal_print):
         def lines_tab(self,period_id,journal_id=False):
             
             lines=self.lines(period_id,journal_id)
-            nbr_bloc=15
+            nbr_bloc=14
             nbr_pages=ceil(float(len(lines))/float(nbr_bloc))
             
             self.nbr_pages=int(nbr_pages)
@@ -74,7 +74,7 @@ class journal_printMA(journal_print):
         def total_pages(self,period_id,journal_id=False):
             
             lines=self.lines(period_id,journal_id)
-            nbr_bloc=15
+            nbr_bloc=14
             nbr_pages=int(ceil(float(len(lines))/float(nbr_bloc)))
             self.page_nbr1 = self.page_nbr1 + nbr_pages
             return self.page_nbr1

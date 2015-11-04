@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<template id="report_balance_MA" inherit_id="account.report_trialbalance">
+			<xpath expr="//t[@t-call='report.html_container']" position="replace">
+				<t t-call="report.html_container">
+					<t t-foreach="account_size(data['form'])" t-as="lines">
+					<template id="account_header" inherit_id="report.external_layout_header">
+						<xpath expr="//div[@class='header']" position="replace">
+							<div class="header">
+								<div class="row">
+									<div class="col-xs-3">
+										<img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 50px;"/>
+									</div>
+									<div class=" col-xs-9 text-right" style="margin-top:32px">
+										<strong>Date:</strong>
+										<span t-esc="date_jour()" style="color: #000066;" />
+									</div>
+								</div>
+								<div class="row ">
+								<div class="col-xs-4 col-xs-offset-5">
+									<h3><strong style="margin-top:10px">Balance Générale</strong></h3>
+							    </div>
+							</div>
+							
+							<div class="row">
+								<div class="col-xs-9">
+									<strong>Chart of Accounts:</strong>
+									<span t-esc="get_account(data)"/>
+								</div>
+								<div class="col-xs-3 text-right">
+									<strong>Fiscal Year:</strong>
+									<span t-esc="get_fiscalyear(data)"/>
+								</div>
+							</div>
+							</div>
+						</xpath>
+					</template>
+						<div class="page">
+							
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th rowspan="2" class="text-center">Code</th>
+										<th rowspan="2" class="text-center">Account</th>
+										<th  colspan="2" class="text-center">Reports</th>
+										<th colspan="2" class="text-center">Mouvements</th>
+										<th colspan="2" class="text-center">Cumuls</th>
+										<th colspan="2" class="text-center">Solde</th>
+									</tr>
+									<tr>
+										<th class="text-center">Debit</th>
+										<th class="text-center">Credit</th>
+										<th class="text-center">Debit</th>
+										<th class="text-center">Credit</th>
+										<th class="text-center">Debit</th>
+										<th class="text-center">Credit</th>
+										<th class="text-center">Debit</th>
+										<th class="text-center">Credit</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr t-foreach="lines" t-as="childrenaccount">
+										<t t-if="childrenaccount['type'] == 'view'">
+											<t t-set="style" t-value="'font-weight:bold;'"/>
+										</t>
+										<t t-if="childrenaccount['type'] != 'view'">
+											<t t-set="style" t-value="'font-weight:normal;'"/>
+										</t>
+										<td>
+											<span t-att-style="style" t-esc="childrenaccount['code']"/>
+										</td>
+										<td>
+											<span style="color: white;" t-esc="(childrenaccount['level'] - 1)"/>
+											<span t-att-style="style" t-esc="childrenaccount['name']"/>
+										</td>
+										<td class="text-right">
+											<t t-if="get_report_debit(data['form'],childrenaccount)!=0.0">
+											<span t-att-style="style" t-esc="get_report_debit(data['form'],childrenaccount)"/>
+											</t>
+										</td>
+										<td class="text-right">
+											<t t-if="get_report_credit(data['form'],childrenaccount)!=0.0">
+											<span t-att-style="style" t-esc="get_report_credit(data['form'],childrenaccount)"/>
+											</t>
+										</td>
+										<td class="text-right">
+											<t t-if="get_movement_debit(data['form'],childrenaccount)!=0.0">
+											<span t-att-style="style" t-esc="get_movement_debit(data['form'],childrenaccount)"/>
+											</t>
+										</td>
+										<td class="text-right">
+											<t t-if="get_movement_credit(data['form'],childrenaccount)!=0.0">
+											<span t-att-style="style" t-esc="get_movement_credit(data['form'],childrenaccount)"/>
+											</t>
+										</td>
+										<td class="text-right">
+											<t t-if="get_cumuls_debit(data['form'],childrenaccount)!=0.0">
+											<span t-att-style="style" t-esc="get_cumuls_debit(data['form'],childrenaccount)"/>
+											</t>
+										</td>
+										<td class="text-right">
+											<t t-if="get_cumuls_credit(data['form'],childrenaccount)!=0.0">
+											<span t-att-style="style" t-esc="get_cumuls_credit(data['form'],childrenaccount)"/>
+											</t>
+										</td>
+										
+										<td class="text-right">
+											<t t-if="get_balance(data['form'],childrenaccount)!=0.00">
+											<span t-att-style="style" t-esc="formatLang(get_balance(data['form'],childrenaccount))"/>
+											</t>
+										</td>
+										<td class="text-right">
+											<t t-if="get_balance(data['form'],childrenaccount)!=0.00">
+											<span t-att-style="style" t-esc="get_balance(data['form'],childrenaccount)"/>
+											</t>
+										</td>
+								
+									</tr>
+								</tbody>
+							</table>
+							
+						</div>
+					<template id="account_footer" inherit_id="report.external_layout_footer">
+            <xpath expr="//div[@class='footer']" position="replace">
+            	<div class="footer">
+        <div class="text-center" style="border-top: 1px solid black;">
+            <ul t-if="not company.custom_footer" class="list-inline">
+                <li t-if="company.phone">Phone: <span t-field="company.phone"/></li>
+
+                <li t-if="company.fax and company.phone">&amp;bull;</li>
+                <li t-if="company.fax">Fax: <span t-field="company.fax"/></li>
+
+                <li t-if="company.email">&amp;bull;</li>
+                <li t-if="company.email">Email: <span t-field="company.email"/></li>
+
+                <li t-if="company.website">&amp;bull;</li>
+                <li t-if="company.website">Website: <span t-field="company.website"/></li>
+         </ul>
+
+          <!-->  <t t-if="company.custom_footer">
+                <span t-raw="company.rml_footer"/>
+         </t>-->
+
+            <ul class="list-inline">
+                <li>Page:</li>
+                <li><span t-esc="get_page()" /></li>
+                <li>/</li>
+                <li><span t-esc="get_number_page()" /></li>
+            </ul>
+        </div>
+    </div>      	
+            	</xpath>
+            	</template>
+				</t>
+			</t>
+			</xpath>
+		</template>
+		
+	</data>
+</openerp>
