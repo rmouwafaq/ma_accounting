@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
+encoding//account_group_entries/__init__.py=utf-8
+encoding//account_group_entries/__openerp__.py=utf-8
+encoding//account_group_entries/account_invoice.py=utf-8
 encoding//account_migration/wizard/account_migre.py=utf-8
 encoding//account_report/report/account_central_journal.py=utf-8
 encoding//l10n_maroc_agilorg/__init__.py=utf-8

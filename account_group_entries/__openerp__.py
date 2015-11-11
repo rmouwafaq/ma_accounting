@@ -25,7 +25,7 @@
  'maintainer': 'AgilORG',
  'category': 'comptable',
  'complexity': "normal",
- 'depends': [],
+ 'depends': ['account'],
  'description': """
 Description
 ==========================
@@ -36,5 +36,4 @@ Description
 
  'installable': True,
  'auto_install': False,
- 'license': 'AGPL-3',
 }
