@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        
+        <record id="wizard_releve_facture_view" model="ir.ui.view">
+            <field name="name">wizard.releve.facture</field>
+            <field name="model">wizard.releve.facture</field>
+            <field name="arch" type="xml">
+            	<form string="print releve factures">
+            		<footer>
+	                    <button name="print_releve_facture" string="Print" type="object" class="oe_highlight" />
+	                    or
+	                    <button string="Cancel" class="oe_link" special="cancel"/>
+	                </footer>
+                 </form>
+            </field>
+        </record>
+        
+		<act_window name="Releve factures"
+		    res_model="wizard.releve.facture"
+		    src_model="account.invoice"
+		    key2="client_action_multi" 
+		    view_mode="form" target="new" 
+		    view_type="form"
+		    view_id="wizard_releve_facture_view"
+		    id="act_new_sub_menu" />
+		    
+		
+    </data>
+</openerp>

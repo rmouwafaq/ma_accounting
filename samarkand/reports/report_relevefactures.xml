@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<template id="report_relevefacture">
+			<t t-call="report.external_layout">
+				<t t-foreach="data['partners']" t-as="partner">
+		        	<div class="page">
+		        			
+		        			<center><h2>Relevé Factures</h2></center>
+		        			<h4>
+				                Client : <span t-esc="partner[1]" />
+				            </h4>
+			        		<table class="table table-condensed">
+				                <thead>
+				                    <tr>
+				                        <th>Num Facture</th>
+				                        <th>Date Facture</th>
+				                        <th class="text-right">Montant</th>
+				                    </tr>
+				                </thead>
+				                <tbody>
+				                	<t t-foreach="docs" t-as="o">
+			        					<tr>
+					                        <td><span t-field="o.number" /></td>
+					                        <td><span t-field="o.date_invoice" /></td>
+					                        <td class="text-right"><span t-field="o.amount_total" /></td>
+					                    </tr>
+			        				</t>
+				                </tbody>
+							</table>
+							<div class="row">
+				                <div class="col-xs-4 pull-right">
+				                    <table class="table table-condensed">
+				                        <tr class="border-black">
+				                            <td><strong>Total</strong></td>
+				                            <td class="text-right">
+				                                 <strong><span t-esc="sum(ac.amount_total for ac in docs)" /></strong>
+				                            </td>
+				                        </tr>
+				                    </table>
+				                </div>
+				            </div>
+		        	</div>
+	        	</t>
+	        </t>	
+		</template>
+	</data>
+</openerp>

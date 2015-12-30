@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	
+    	
+       
+        <report 
+        	id="action_report_releveFacture" 
+            string="Releve factures" 
+            model="wizard.releve.facture" 
+            report_type="qweb-pdf"
+            name="samarkand.report_relevefacture" 
+            file="samarkand.report_relevefacture" 
+        />
+        
+       
+    </data>
+</openerp>
