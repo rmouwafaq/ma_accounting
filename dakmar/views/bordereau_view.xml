@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<record id="view_bordereau_internal_search" model="ir.ui.view">
+            <field name="name">dakmar.bordereau.internal.search</field>
+            <field name="model">dakmar.bordereau</field>
+            <field name="arch" type="xml">
+                <search string="Bordereau Lists">
+                    <!--<field name="name" string="Picking List" filter_domain="['|',('name','ilike', self),('origin','ilike',self)]"/>-->
+                    <filter icon="terp-check" name="draft" string="Brouillon" domain="[('state','=','draft')]" help="Draft Bordereau"/>
+                    <filter icon="terp-check" name="claim" string="Reclamation" domain="[('state','=','claim')]" help="Claim Bordereau"/>
+                    <filter icon="terp-dialog-close" name="done" string="Done" domain="[('state','=','done')]" help="Done Bordereau"/>
+                    <filter icon="terp-check" name="close" string="Fermer" domain="[('state','=', 'close')]" help="Close Bordereau"/>
+                    
+                    <group expand="0" string="Group By">
+                        <filter string="Status" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Fournisseur" domain="[]" context="{'group_by':'provider_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+		<record id="bordereau_tree_view" model="ir.ui.view">
+            <field name="name">dakmar.bordereau.tree</field>
+            <field name="model">dakmar.bordereau</field>
+            <field name="arch" type="xml">
+        		<tree colors="blue:state == 'draft';grey:state == 'cancel';red:state not in ('close', 'done');" string="Bordereaux">
+        			<field name="name" />
+        			<field name="provider_id" />
+        			<field name="date_start" />
+        			<field name="date_end" />
+        			<field name="total_weight" />
+        			<field name="total_weight_receptions" />
+        			<field name="weights_difference" />
+        			<field name="tax_weights_difference" />
+        			<field name="total_amount" />
+        			<field name="state" />
+        			
+        		</tree>
+            </field>
+        </record>
+        <record id="bordereau_form_view" model="ir.ui.view">
+            <field name="name">dakmar.bordereau.form</field>
+            <field name="model">dakmar.bordereau</field>
+            
+            <field name="arch" type="xml">
+            	<form name="Bordereau">
+            		<header>
+                        <button name="action_confirm" states="claim" string="Mark as Done" type="object" class="oe_highlight" groups="base.group_user"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,claim,done,close" statusbar_colors='{"claim":"red","close":"red"}'/>
+                    </header>
+            		<group col="4">
+            			<field name="name" />
+						<field name="provider_id" domain="[('is_onp', '=', True)]" on_change="get_bon_reception(provider_id,date_start,date_end)"/>
+					</group>
+					<group col="2">
+						<field name="date_start" on_change="get_bon_reception(provider_id,date_start,date_end)" />
+						<field name="date_end" on_change="get_bon_reception(provider_id,date_start,date_end)" />
+					</group>
+					<group col="4">
+						<field name="total_weight" />
+						<field name="total_amount" />
+						<field name="average_price" />
+					</group>
+					 <notebook tabpos="up" colspan="4">
+					 	<page string="Bons Receptions" name="liste_bon_reception">
+							<field name="bon_reception_ids" widget="many2many"  /> 
+						</page>
+						<page string="Information Paiement" name="information_paiement">
+							<group col="2">
+								<field name="payment_reference" />
+								<field name="payment_amount" />
+							</group>		 
+						</page>
+                   	 </notebook>
+                   	 <div>
+                   	 	<button name="button_calcul_total_weight" string="calculer" style="width:145px" type="object" help="Recompute total bon reception"/>
+                   	 </div>
+                   	 <group class="oe_subtotal_footer oe_right" >
+					    <field name="total_weight_brouillon" readonly="1" />
+					    <field name="total_weight_receptions" readonly="1" required="0"/>
+					    <field name="weights_difference" class="oe_subtotal_footer_separator" /> 
+					    <field name="tax_weights_difference" style="font-size:18px;color:blue" />
+					</group>
+                 </form>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_bordereau" >
+			<field name="name">Bordereau</field>
+			<field name="res_model">dakmar.bordereau</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="bordereau_tree_view"/>
+			<field name="search_view_id" ref="view_bordereau_internal_search"/>
+		</record>
+		
+        <menuitem name="Bordereau" action="action_bordereau"
+            id="dakmar_bordereau"
+            parent="stock.menu_stock_warehouse_mgmt" sequence="5"/>
+		
+		<record id="view_onp_partner_form" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="category_id" position="after">
+                	<label for="is_onp" string="Fournisseur ONP"/><field name="is_onp" />
+            	</field>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="bon_reception_form_view" model="ir.ui.view">
+            <field name="name">stock.picking</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+        		<field name="origin" position="after">
+                	<field name="driver_id" attrs="{'invisible':[('picking_type_id', '!=', 1)]}" />
+                	<field name="vehicule_matricule" attrs="{'invisible':[('picking_type_id', '!=', 1)]}" />
+                	<field name="average_price" readonly="1" attrs="{'invisible':[('picking_type_id', '!=', 1)]}" />
+            	</field>
+            	<field name="backorder_id" position="after">
+                	<field name="container" attrs="{'invisible':[('picking_type_id', '!=', 2)]}" />
+                	<field name="truck" attrs="{'invisible':[('picking_type_id', '!=', 2)]}" />
+                	<field name="destination" attrs="{'invisible':[('picking_type_id', '!=', 2)]}" />
+                	<field name="via" attrs="{'invisible':[('picking_type_id', '!=', 2)]}" />
+            	</field>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_bon_reception" >
+			<field name="name">Bon reception</field>
+			<field name="res_model">stock.picking</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="stock.vpicktree"/>
+		</record>
+		
+<!--       <menuitem name="Bon Reception" action="action_bon_reception"
+            id="bon_reception_id"
+            parent="stock.menu_stock_warehouse_mgmt" sequence="4"/> -->
+            
+        <record id="br_stock_move_form_view" model="ir.ui.view">
+            <field name="name">stock.move.form</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_form"/>
+            <field name="arch" type="xml">
+        		<field name="name" position="before">
+                	<field name="nombre_caisse" />
+            	</field>
+            </field>
+        </record>
+        
+        <record id="br_stock_move_tree_view" model="ir.ui.view">
+            <field name="name">stock.move.tree</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+            <field name="arch" type="xml">
+        		<field name="location_id" position="before">
+                	<field name="nombre_caisse" />
+            	</field>
+            </field>
+        </record>
+        
+        <record id="dakmar_view_picking_internal_search" model="ir.ui.view">
+            <field name="name">stock.picking.internal.search</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@string='Procurement Group']" position="after">
+                    <filter string="Fournisseur" domain="[]" context="{'group_by':'partner_id'}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

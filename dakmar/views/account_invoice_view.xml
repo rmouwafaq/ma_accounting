@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+        <record id="account_invoice_view_form" model="ir.ui.view">
+            <field name="name">account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+        		<field name="fiscal_position" position="after">
+                	<field name="container" />
+                	<field name="truck" />
+                	<field name="destination"  />
+                	<field name="via"  />
+            	</field>
+            	<field name="uos_id" position="after">
+                	<field name="nombre_caisse" />
+            	</field>
+            	<!--<field name="uos_id" position="before">
+                	<field name="average_price" />
+            </field>-->
+            </field>
+        </record>
+        
+    </data>
+</openerp>
