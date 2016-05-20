@@ -24,8 +24,8 @@
  'author': 'AgilORG',
  'maintainer': 'AgilORG',
  'category': 'Warehouse',
- 'complexity': "normal", 
- 'depends': ['base','sale','purchase','stock','delivery'],
+ 'complexity': "normal",
+ 'depends': ['base', 'sale', 'sale_layout', 'purchase', 'stock', 'delivery'],
  'description': """
 ==========================
 
@@ -40,7 +40,8 @@ module specifique pour DAKMAR
           'views/report_invoice.xml',
           'views/report_saleorder.xml',
           'views/sale_view.xml',
-           'wizard/stock_transfer_details.xml',
+          'wizard/stock_transfer_details.xml',
+          'views/sale_layout_template.xml',
           ],
   'qweb':[],
   

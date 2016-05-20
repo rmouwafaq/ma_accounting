@@ -50,4 +50,5 @@ class procurement_order(osv.osv):
     _inherit = 'procurement.order'
     _columns = {
         'nombre_caisse':fields.integer('Nbr Caisse'),
+        'poid_brut':fields.float('Poid brut'),
     }

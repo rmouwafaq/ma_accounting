@@ -49,6 +49,7 @@ class stock_transfer_details(models.TransientModel):
             for move_line in picking.move_lines:
                 if(move_line.product_id.id==op.product_id.id):
                     nbr_caisse=move_line.nombre_caisse
+                    poid_brut=move_line.poid_brut
                     
             item = {
                 'packop_id': op.id,
@@ -56,6 +57,7 @@ class stock_transfer_details(models.TransientModel):
                 'product_uom_id': op.product_uom_id.id,
                 'quantity': op.product_qty,
                 'nombre_caisse':nbr_caisse,
+                'poid_brut':poid_brut,
                 'package_id': op.package_id.id,
                 'lot_id': op.lot_id.id,
                 'sourceloc_id': op.location_id.id,
@@ -83,6 +85,7 @@ class stock_transfer_details(models.TransientModel):
                     'product_uom_id': prod.product_uom_id.id,
                     'product_qty': prod.quantity,
                     'nombre_caisse':prod.nombre_caisse,
+                    'poid_brut':prod.poid_brut,
                     'package_id': prod.package_id.id,
                     'lot_id': prod.lot_id.id,
                     'location_id': prod.sourceloc_id.id,
@@ -114,4 +117,5 @@ class dakmar_stock_transfer_details_items(models.TransientModel):
     _inherit = 'stock.transfer_details_items'
 
     nombre_caisse = fields.Integer('Nbr Caisse')
+    poid_brut = fields.Float('Poid brut')
     

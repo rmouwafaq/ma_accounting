@@ -9,7 +9,7 @@
     	</template>
     	
 		
-		<template id="report_picking_custom" inherit_id="stock.report_picking">
+		<!--template id="report_picking_custom" inherit_id="stock.report_picking">
 			<xpath expr="//table[@class='table table-condensed'][2]" position="replace">
 	        	<table class="table table-condensed" t-if="not o.pack_operation_ids">
 	              <thead>
@@ -84,57 +84,8 @@
                 </table>
 	        </xpath>
 	        
-	        <xpath expr="//table[@class='table table-condensed'][1]" position="after">
-	        	
-	            <table class="table table-condensed">
-	                <thead>
-	                    <tr>
-	                        <th><strong t-if="o.driver_id">Chauffeur</strong></th>
-	                        <th><strong   t-if="o.vehicule_matricule">Matricule vehicule</strong></th>
-	                        <th><strong t-if="o.container">Conteneur</strong></th>
-	                        <th><strong t-if="o.truck">Camion</strong></th>
-	                        <th><strong t-if="o.destination">Destination</strong></th>
-	                        <th><strong t-if="o.via">Via</strong></th>
-	                    </tr>
-	                </thead>
-	                <tbody>
-	                    <tr>
-	                        <td>
-	                        	<div  t-field="o.driver_id">
-		                            <div t-field="o.driver_id" 
-	                     t-field-options='{"widget": "contact", "fields": ["name"], "no_marker": true}'/>
-	                     		</div>
-	                        </td>
-	                        <td>
-	                        	<div t-field="o.vehicule_matricule">
-	                            	<span t-field="o.vehicule_matricule"/>
-	                            </div>
-	                        </td>
-	                        <td>
-	                        	<div t-field="o.container">
-	                            	<span t-field="o.container"/>
-	                            </div>
-	                        </td>
-	                        <td>
-	                        	<div t-field="o.truck">
-	                            	<span t-field="o.truck"/>
-	                            </div>
-	                        </td>
-	                        <td>
-	                        	<div t-field="o.destination">
-	                            	<span t-field="o.destination"/>
-	                            </div>
-	                        </td>
-	                        <td>
-	                        	<div  t-field="o.via">
-	                            	<span t-field="o.via"/>
-	                            </div>
-	                        </td>
-	                    </tr>
-	                </tbody>
-	          </table>
-	        </xpath>
-		</template>
+
+		</template-->
 		
     </data>
 </openerp>

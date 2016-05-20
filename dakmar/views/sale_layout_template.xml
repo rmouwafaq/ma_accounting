@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<template id="report_invoice_layouted2" inherit_id="sale_layout.report_invoice_layouted">
+			<xpath expr="//t[2]" position="replace">
+				<!-- Lines associated -->
+				<t t-foreach="p['lines']" t-as="l">
+					<tr>
+						<td>
+							<span t-field="l.name"/>
+						</td>
+						<td class="text-right">
+							<span t-field="l.poid_brut"/>
+							<span t-field="l.uos_id" groups="product.group_uom"/>
+						</td>
+						<td class="text-right">
+							<span t-field="l.quantity"/>
+							<span t-field="l.uos_id" groups="product.group_uom"/>
+						</td>
+						<td class="text-right">
+							<span t-field="l.nombre_caisse"/>
+						</td>
+						<td class="text-right">
+							<span t-field="l.price_unit"/>
+						</td>
+						<td class="text-right" groups="sale.group_discount_per_so_line">
+							<span t-field="l.discount"/>
+						</td>
+						<td class="text-right">
+							<span t-esc="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/>
+						</td>
+						<td class="text-right">
+							<span t-field="l.price_subtotal"
+							t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+						</td>
+					</tr>
+				</t>
+			</xpath>
+			<xpath expr="//t[3]" position="replace">
+				<t t-call="dakmar.subtotal_invoice"/>
+			</xpath>
+		</template>
+		<template id="subtotal_invoice" >
+			<!-- Subtotal -->
+			<tr style="font-weight: bold; border-top: 1px solid black;">
+				<td >
+					<strong>Total-catégorie:</strong>
+				</td>
+				<td class="text-right">
+					<span  t-esc="p['poid_brut']"/>
+				</td>
+				<td class="text-right">
+					<span  t-esc="p['poid_net']"/>
+				</td>
+				<td class="text-right">
+					<span  t-esc="p['nombre_caisse']"/>
+				</td>
+				<td ></td>
+				<td ></td>
+				<td class="text-right" >
+					<span  t-esc="p['subtotal']" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+				</td>
+			</tr>
+		</template>
+		<template id="subtotal_picking" >
+			<!-- Subtotal -->
+			<tr style="font-weight: bold; border-top: 1px solid black;">
+				<td >
+					<strong>Total-catégorie:</strong>
+				</td>
+				<td class="text-right">
+					<span  t-esc="p['poid_net']"/>
+				</td>
+				<td class="text-right">
+					<span  t-esc="p['poid_brut']"/>
+				</td>
+				<td class="text-right">
+					<span  t-esc="p['nombre_caisse']"/>
+				</td>
+				<td ></td>
+				<td ></td>
+			</tr>
+		</template>
+
+		<!-- Invoice form -->
+		<record model="ir.ui.view" id="view_invoice_form_inh">
+			<field name="name">account.invoice.form.inh</field>
+			<field name="model">account.invoice</field>
+			<field name="inherit_id" ref="sale_layout.view_invoice_form_inherit_1"/>
+			<field name="arch" type="xml">
+				<data>
+					<xpath expr="//page[@string='Invoice Lines']/field[@name='invoice_line']/tree/field[@name='sale_layout_cat_id']" position="replace"></xpath>
+
+				</data>
+			</field>
+		</record>
+		<template id="report_picking_layouted" inherit_id="stock.report_picking">
+			<xpath expr="//table[@class='table table-condensed'][2]" position="replace">
+				<table class="table table-condensed" t-if="not o.pack_operation_ids">
+					<thead>
+						<tr>
+							<th>
+								<strong>Product</strong>
+							</th>
+							<th class="text-right">
+								<strong>Poid Net</strong>
+							</th>
+							<th class="text-right">
+								<strong>Poid Brut</strong>
+							</th>
+							<th>
+								<strong>Nbr Caisse</strong>
+							</th>
+							<t t-if="o.picking_type_id.code != 'incoming'">
+								<th>
+									<strong>Source</strong>
+								</th>
+							</t>
+							<th>
+								<strong>Barcode</strong>
+							</th>
+							<t t-if="o.picking_type_id.code != 'outgoing'">
+								<th>
+									<strong>Destination</strong>
+								</th>
+							</t>
+						</tr>
+					</thead>
+					<tbody>
+						<t t-foreach="o.sale_layout_lines(picking_id=o.id)" t-as="p">
+							<!-- Name of the category -->
+							<t t-call="sale_layout.category_template"/>
+
+							<!-- Lines associated -->
+							<t t-foreach="p['lines']" t-as="move">
+								<tr>
+									<td>
+										<span t-field="move.product_id"/>
+									</td>
+									<td class="text-right">
+										<span t-field="move.product_uom_qty"/>
+										<span t-field="move.product_uom" groups="product.group_uom"/>
+									</td>
+									<td class="text-right">
+										<span t-field="move.poid_brut"/>
+										<span t-field="move.product_uom" groups="product.group_uom"/>
+									</td>
+									<td class="text-right">
+										<span t-field="move.nombre_caisse"/>
+									</td>
+									<t t-if="o.picking_type_id.code != 'incoming'">
+										<td>
+											<span t-field="move.location_id"/>
+										</td>
+									</t>
+									<td>
+										<span t-if="move.product_id and move.product_id.ean13">
+											<img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', move.product_id.ean13, 600, 100)" style="width:300px;height:50px"/>
+										</span>
+									</td>
+									<t t-if="o.picking_type_id.code != 'outgoing'">
+										<td>
+											<span t-field="move.location_dest_id"/>
+										</td>
+									</t>
+								</tr>
+							</t>
+
+							<!-- Subtotal -->
+							<t t-call="dakmar.subtotal_picking"/>
+
+						</t>
+					</tbody>
+				</table>
+			</xpath>
+			<xpath expr="//table[@class='table table-condensed'][3]" position="replace">
+				<table class="table table-condensed" t-if="o.pack_operation_ids">
+					<thead>
+						<tr>
+							<th>
+								<strong>Product</strong>
+							</th>
+							<th class="text-right">
+								<strong>Poid Net</strong>
+							</th>
+							<th class="text-right">
+								<strong>Poid Brut</strong>
+							</th>
+							<th class="text-right">
+								<strong>Nbr Caisse</strong>
+							</th>
+							<t t-if="o.picking_type_id.code != 'incoming'">
+								<th>
+									<strong>Source</strong>
+								</th>
+							</t>
+							<th>
+								<strong>Barcode</strong>
+							</th>
+							<t t-if="o.picking_type_id.code != 'outgoing'">
+								<th>
+									<strong>Destination</strong>
+								</th>
+							</t>
+						</tr>
+					</thead>
+					<tbody>
+						<t t-foreach="o.sale_layout_olines(picking_id=o.id)" t-as="p">
+							<!-- Name of the category -->
+							<t t-call="sale_layout.category_template"/>
+
+							<!-- Lines associated -->
+							<t t-foreach="p['lines']" t-as="pack_operation">
+								<tr>
+									<td>
+										<span t-field="pack_operation.product_id"/>
+										<t t-if="not pack_operation.product_id and pack_operation.package_id">
+											<span  t-field="pack_operation.package_id"/>
+										</t>
+									</td>
+									<td class="text-right">
+										<span t-field="pack_operation.product_qty"/>
+										<span t-field="pack_operation.product_uom_id" groups="product.group_uom"/>
+									</td>
+									<td class="text-right">
+										<span t-field="pack_operation.poid_brut"/>
+										<span t-field="pack_operation.product_uom_id" groups="product.group_uom"/>
+									</td>
+									<td class="text-right">
+										<span t-field="pack_operation.nombre_caisse"/>
+									</td>
+									<t t-if="o.picking_type_id.code != 'incoming'">
+										<td>
+											<span t-field="pack_operation.location_id"/>
+											<span t-if="pack_operation.package_id">:</span>
+											<span t-field="pack_operation.package_id"/>
+											<span t-if="pack_operation.lot_id">:</span>
+											<span t-field="pack_operation.lot_id"/>
+										</td>
+									</t>
+									<td>
+										<span t-if="pack_operation.lot_id">
+											<img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', pack_operation.lot_id.name, 600, 100)" style="width:300px;height:50px"/>
+										</span>
+										<span t-if="pack_operation.product_id and not pack_operation.lot_id and pack_operation.product_id.ean13">
+											<img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', pack_operation.product_id.ean13, 600, 100)" style="width:300px;height:50px"/>
+										</span>
+										<span t-if="pack_operation.package_id and not pack_operation.product_id">
+											<img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', pack_operation.package_id.name, 600, 100)" style="width:300px;height:50px"/>
+										</span>
+									</td>
+									<t t-if="o.picking_type_id.code != 'outgoing'">
+										<td>
+											<span t-field="pack_operation.location_dest_id"/>
+											<span t-if="pack_operation.result_package_id">:</span>
+											<span t-field="pack_operation.result_package_id"/>
+										</td>
+									</t>
+								</tr>
+							</t>
+
+							<!-- Subtotal -->
+							<t t-call="dakmar.subtotal_picking"/>
+
+						</t>
+					</tbody>
+				</table>
+			</xpath>
+			<xpath expr="//table[@class='table table-condensed'][1]" position="after">
+
+				<table class="table table-condensed">
+					<thead>
+						<tr>
+							<th>
+								<strong t-if="o.driver_id">Chauffeur</strong>
+							</th>
+							<th>
+								<strong   t-if="o.vehicule_matricule">Matricule vehicule</strong>
+							</th>
+							<th>
+								<strong t-if="o.container">Conteneur</strong>
+							</th>
+							<th>
+								<strong t-if="o.truck">Camion</strong>
+							</th>
+							<th>
+								<strong t-if="o.destination">Destination</strong>
+							</th>
+							<th>
+								<strong t-if="o.via">Via</strong>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<div  t-field="o.driver_id">
+									<div t-field="o.driver_id"
+									t-field-options='{"widget": "contact", "fields": ["name"], "no_marker": true}'/>
+								</div>
+							</td>
+							<td>
+								<div t-field="o.vehicule_matricule">
+									<span t-field="o.vehicule_matricule"/>
+								</div>
+							</td>
+							<td>
+								<div t-field="o.container">
+									<span t-field="o.container"/>
+								</div>
+							</td>
+							<td>
+								<div t-field="o.truck">
+									<span t-field="o.truck"/>
+								</div>
+							</td>
+							<td>
+								<div t-field="o.destination">
+									<span t-field="o.destination"/>
+								</div>
+							</td>
+							<td>
+								<div  t-field="o.via">
+									<span t-field="o.via"/>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</xpath>
+		</template>
+
+	</data>
+</openerp>

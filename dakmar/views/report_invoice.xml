@@ -44,19 +44,20 @@
 	            </div>
             
 	        </xpath>
-	        <xpath expr="//table[@class='table table-condensed']" position="replace">
-	            <table class="table table-condensed" style="border-bottom:1px solid #000">
+	        <xpath expr="//table[@class='table table-condensed']/thead" position="replace">
+	            <!-- <table class="table table-condensed" style="border-bottom:1px solid #000"> -->
 	                <thead>
 	                    <tr>
 	                        <th>Description</th>
-	                        <th>Poids Net</th>
-	                        <th>Nbr Caisse</th>
+	                        <th class="text-right">Poids Brut</th>
+	                        <th class="text-right">Poids Net</th>
+	                        <th class="text-right">Nbr Caisse</th>
 	                        <th class="text-right">Unit Price</th>
 	                        <th class="text-right" groups="sale.group_discount_per_so_line">Discount (%)</th>
 	                        <th class="text-right">Amount</th>
 	                    </tr>
 	                </thead>
-	                <tbody class="invoice_tbody">
+	                <!-- <tbody class="invoice_tbody">
 	                    <tr t-foreach="o.invoice_line" t-as="l">
 	                        <td><span t-field="l.name"/></td>
 	                        <td>
@@ -85,7 +86,7 @@
 	                        <td class="text-right"></td>
 	                    </tr>
 	                </tbody>
-	            </table>
+	            </table> -->
 	            
 	        </xpath>
 	        
@@ -93,7 +94,7 @@
 	        	<div class="row" style="padding-left:40px;margin-top:30px">
 	        		
 	        		<div t-if="o.total_lettre">
-	        			<strong>Arrêtée la présente facture à la somme de :</strong>
+	        			<strong>Arrête la présente facture à la somme de :</strong>
 	        			<p style="margin-left:60px;" t-field="o.total_lettre"/>
 	        		</div>
 	        		<div>

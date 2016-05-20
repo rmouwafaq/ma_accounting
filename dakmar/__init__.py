@@ -23,4 +23,5 @@ import bon_reception
 import account_invoice
 import wizard
 import sale
+import sale_layout
 

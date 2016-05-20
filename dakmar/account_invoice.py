@@ -48,5 +48,6 @@ class dakmar_account_invoice_line(osv.osv):
 
     _columns = {
         'nombre_caisse':fields.integer('Nbr Caisse'),
+        'poid_brut':fields.float('Poids Brut'),
 #         'average_price':fields.float('Prix moyenne'),
     }

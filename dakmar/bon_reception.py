@@ -51,7 +51,7 @@ class dakmar_stock_move(osv.osv):
     _inherit = "stock.move"
     
     _columns = {
-        #'name':fields.char('name',size=50),
+        'poid_brut':fields.float('Poid Brut'),
         'nombre_caisse':fields.integer('Nbr Caisse'),
     }
     
@@ -64,6 +64,7 @@ class dakmar_stock_move(osv.osv):
         picking_ids.append(move.picking_id.id)
         picking_obj=self.pool.get('stock.picking').browse(cr,uid,picking_ids,context=context)
 #         invoice_line_vals['average_price']=picking_obj.average_price
+        invoice_line_vals['poid_brut']=move.poid_brut
         invoice_line_vals['nombre_caisse']=move.nombre_caisse
         return self.pool.get('account.invoice.line').create(cr, uid, invoice_line_vals, context=context)
     
@@ -74,8 +75,9 @@ class dakmar_stock_move(osv.osv):
         """
         for move_obj in self.browse(cr, uid, move_ids, context=context):
             if(move_obj.procurement_id.nombre_caisse != move_obj.nombre_caisse):
-                print "nombre_caisse==",move_obj.procurement_id.nombre_caisse,move_obj.nombre_caisse
-                self.write(cr, uid, [move_obj.id], {'nombre_caisse':move_obj.procurement_id.nombre_caisse }, context=context)
+                self.write(cr, uid, [move_obj.id], {'nombre_caisse':move_obj.procurement_id.nombre_caisse,
+                                                    'poid_brut':move_obj.procurement_id.poid_brut
+                                                    }, context=context)
         pick_obj = self.pool.get("stock.picking")
         picks = pick_obj.search(cr, uid, [
                 ('group_id', '=', procurement_group),
@@ -107,4 +109,5 @@ class dakmar_stock_pack_operation(osv.osv):
     
     _columns = {
         'nombre_caisse':fields.integer('Nbr Caisse'),
+        'poid_brut':fields.float('Poid brut'),
     }

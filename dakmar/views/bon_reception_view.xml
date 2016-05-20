@@ -38,6 +38,7 @@
             <field name="inherit_id" ref="stock.view_move_picking_form"/>
             <field name="arch" type="xml">
         		<field name="name" position="before">
+        			<field name="poid_brut" />
                 	<field name="nombre_caisse" />
             	</field>
             </field>
@@ -49,6 +50,7 @@
             <field name="inherit_id" ref="stock.view_move_picking_tree"/>
             <field name="arch" type="xml">
         		<field name="location_id" position="before">
+        			<field name="poid_brut" />
                 	<field name="nombre_caisse" />
             	</field>
             </field>

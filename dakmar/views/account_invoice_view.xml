@@ -13,6 +13,9 @@
                 	<field name="destination"  />
                 	<field name="via"  />
             	</field>
+            	<field name="uos_id" position="before">
+                	<field name="poid_brut" />
+            	</field>
             	<field name="uos_id" position="after">
                 	<field name="nombre_caisse" />
             	</field>
