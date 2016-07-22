@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding/__openerp__.py=utf-8
+encoding/account_invoice.py=utf-8
+encoding/bon_reception.py=utf-8
+encoding/bordereau.py=utf-8

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	   <report 
+            id="report_invoices_provider"
+            model="account.invoice"
+            string="Facture Fournisseur"
+            report_type="qweb-pdf"
+            name="dakmar.report_invoice_provider"
+            file="dakmar.report_invoice_provider"
+            attachment_use="True"
+            attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
+        />
+	</data>
+</openerp>
+			

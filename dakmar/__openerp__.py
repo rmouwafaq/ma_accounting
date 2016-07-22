@@ -19,13 +19,13 @@
 #
 ##############################################################################
 
-{'name': 'Dakmar ',
+{'name': 'dakmar ',
  'version': '1.0',
  'author': 'AgilORG',
  'maintainer': 'AgilORG',
  'category': 'Warehouse',
  'complexity': "normal",
- 'depends': ['base', 'sale', 'sale_layout', 'purchase', 'stock', 'delivery'],
+ 'depends': ['base', 'sale', 'sale_layout', 'purchase', 'stock', 'delivery', 'report'],
  'description': """
 ==========================
 
@@ -38,10 +38,14 @@ module specifique pour DAKMAR
           'views/account_invoice_view.xml',
           'views/report_stockpicking.xml',
           'views/report_invoice.xml',
+          'views/report_invoice_provider.xml',
+          'views/dakmar_report.xml',
+          'views/layouts.xml',
           'views/report_saleorder.xml',
           'views/sale_view.xml',
           'wizard/stock_transfer_details.xml',
           'views/sale_layout_template.xml',
+
           ],
   'qweb':[],
   

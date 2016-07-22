@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<template id="external_layout_provider">
+			<!-- Multicompany -->
+			<t t-if="o and 'company_id' in o">
+				<t t-set="company" t-value="o.company_id"></t>
+			</t>
+			<t t-if="not o or not 'company_id' in o">
+				<t t-set="company" t-value="res_company"></t>
+			</t>
+			<t t-call="dakmar.external_layout_header" />
+			<t t-raw="0" />
+			<t t-call="dakmar.external_layout_footer" />
+		</template>
+		<template id="external_layout_header">
+			<div class="header">
+				<br></br>
+				<br></br>
+				<div class="row zero_min_height">
+					<div class="col-xs-12">
+						<div style="border-bottom: 1px solid black;"></div>
+					</div>
+				</div>
+				<br></br>
+				<br></br>
+				<div class="row">
+					<div class="col-xs-3">
+						<div t-field="o.partner_id"
+						t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
+						style="border-bottom: 1px solid black;" />
+					</div>
+				</div>
+				<br></br>
+				<br></br>
+				<div class="row">
+					<div class="col-xs-5 col-xs-offset-7">
+						<div t-field="company.partner_id"
+						t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
+					</div>
+				</div>
+				<br></br>
+				<br></br>
+
+			</div>
+		</template>
+		<template id="external_layout_footer">
+			<div class="footer">
+				<div class="text-center" style="border-top: 1px solid black;">
+					<t t-if="company.custom_footer">
+						<span t-raw="company.rml_footer" />
+					</t>
+					<ul class="list-inline">
+						<li>Page:</li>
+						<li>
+							<span class="page" />
+						</li>
+						<li>/</li>
+						<li>
+							<span class="topage" />
+						</li>
+					</ul>
+				</div>
+			</div>
+		</template>
+	</data>
+</openerp>
