@@ -38,14 +38,16 @@ module specifique pour DAKMAR
           'views/account_invoice_view.xml',
           'views/report_stockpicking.xml',
           'views/report_invoice.xml',
-          'views/report_invoice_provider.xml',
-          'views/dakmar_report.xml',
-          'views/layouts.xml',
           'views/report_saleorder.xml',
           'views/sale_view.xml',
           'wizard/stock_transfer_details.xml',
           'views/sale_layout_template.xml',
-
+          
+          'views/dakmar_report.xml',
+          'views/layouts.xml',
+          'views/report_invoice_provider.xml',
+          'views/report_invoice_provider_layouted.xml',
+          'views/sale_layout_provider_template.xml',
           ],
   'qweb':[],
   
