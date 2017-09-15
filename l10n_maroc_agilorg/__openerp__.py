@@ -38,7 +38,7 @@ produits et charges), balance générale à 6 colonnes, Grand livre cumulatif...
         'security/ir.model.access.csv',
         'account_type.xml',
         'Agilorg_Pcg_Normal.xml',
-        'Agilorg_Pcg_Simplifié.xml',
+        'Agilorg_Pcg_Simplifie.xml',
         'l10n_ma_tax_simple.xml',
         'l10n_ma_wizard.xml',    
         'l10n_ma_tax.xml',
